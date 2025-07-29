@@ -5,9 +5,15 @@ from fighter_class import FIGHTER_CLASSES
 from models import FightResult, Fighter
 from fight import Fight
 
+# Hằng số để giới hạn số lượng kết quả trong lịch sử
+MAX_HISTORY_SIZE = 50
+
+# Khởi tạo session state để lưu lịch sử nếu chưa có
+if 'fight_history' not in st.session_state:
+    st.session_state.fight_history = []
+
 def display_fight_results(result: FightResult, class_a: str, class_b: str):
     """Hàm này chỉ chịu trách nhiệm hiển thị kết quả lên giao diện Streamlit."""
-    st.markdown("## Kết quả mô phỏng")
     st.write(f"**Trận đấu:** `{class_a}` (A) vs `{class_b}` (B)")
     st.write(f"**Điểm kỹ năng:** `{result.score_a}` vs `{result.score_b}`")
     st.success(f"**Kết quả:** {result.result_description}")
@@ -72,5 +78,39 @@ if st.button("🎮 Mô phỏng trận đấu"):
     fight.simulate()
     fight_result = fight.result
     
-    # 4. Hiển thị kết quả ra giao diện, sử dụng tên đẳng cấp thực tế đã được mô phỏng
-    display_fight_results(fight_result, class_a_name, class_b_name)
+    # 4. Lưu kết quả vào history trong session state
+    history_entry = {
+        "result": fight_result,
+        "class_a": class_a_name,
+        "class_b": class_b_name,
+    }
+    st.session_state.fight_history.insert(0, history_entry)
+
+    # Giới hạn số lượng history, ghi đè cái cũ nhất
+    st.session_state.fight_history = st.session_state.fight_history[:MAX_HISTORY_SIZE]
+
+# --- Hiển thị Lịch sử ---
+st.markdown("---")
+st.markdown("## 📜 Lịch sử kết quả")
+
+if not st.session_state.fight_history:
+    st.info("Chưa có trận đấu nào được mô phỏng. Bấm nút 'Mô phỏng' để bắt đầu!")
+else:
+    # Thêm nút để xóa toàn bộ lịch sử
+    if st.button("🗑️ Xóa lịch sử"):
+        st.session_state.fight_history = []
+        st.rerun() # Chạy lại app để cập nhật giao diện ngay lập tức
+
+    # Hiển thị từng kết quả trong lịch sử bằng st.expander
+    for i, entry in enumerate(st.session_state.fight_history):
+        result = entry["result"]
+        class_a = entry["class_a"]
+        class_b = entry["class_b"]
+
+        # Tạo tiêu đề tóm tắt cho expander
+        summary = result.result_description.split('(')[0].strip().replace("✅ ", "").replace("❌ ", "")
+        expander_title = f"Trận #{len(st.session_state.fight_history) - i}: {class_a} vs {class_b}  |  {summary}"
+
+        # Mở sẵn expander của kết quả gần nhất (i=0)
+        with st.expander(expander_title, expanded=(i == 0)):
+            display_fight_results(result, class_a, class_b)

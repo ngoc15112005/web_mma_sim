@@ -49,7 +49,14 @@ def load_history() -> List[HistoryEntry]:
             fight_result = FightResult(**{k: v for k, v in fr_dict.items() if k not in ['finish_info', 'time_info']}, finish_info=finish_info, time_info=time_info)
             
             # Tạo lại đối tượng HistoryEntry cấp cao nhất
-            history_entry = HistoryEntry(**{k: v for k, v in entry_dict.items() if k != 'fight_result'}, fight_result=fight_result)
+            # Tách dữ liệu cho HistoryEntry và cung cấp giá trị mặc định cho các trường mới
+            # để đảm bảo tương thích ngược với các file lịch sử cũ.
+            history_entry_data = {k: v for k, v in entry_dict.items() if k != 'fight_result'}
+            history_entry_data['fight_result'] = fight_result
+            history_entry_data.setdefault('archetype_a_name', 'Không rõ')
+            history_entry_data.setdefault('archetype_b_name', 'Không rõ')
+
+            history_entry = HistoryEntry(**history_entry_data)
             reconstructed_history.append(history_entry)
         
         return reconstructed_history

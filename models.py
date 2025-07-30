@@ -64,4 +64,6 @@ class HistoryEntry:
     fight_result: 'FightResult'
     class_a_name: str
     class_b_name: str
+    archetype_a_name: str
+    archetype_b_name: str
     entry_id: str = field(default_factory=lambda: str(uuid.uuid4()))

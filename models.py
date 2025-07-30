@@ -1,6 +1,7 @@
 import random
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Tuple, Dict, Optional
+import uuid
 
 @dataclass
 class FighterClass:
@@ -56,3 +57,11 @@ class FightResult:
     result_description: str
     finish_info: 'FinishInfo'
     time_info: 'TimeInfo'
+
+@dataclass
+class HistoryEntry:
+    """Lưu trữ thông tin của một trận đấu đã qua để hiển thị trong lịch sử."""
+    fight_result: 'FightResult'
+    class_a_name: str
+    class_b_name: str
+    entry_id: str = field(default_factory=lambda: str(uuid.uuid4()))

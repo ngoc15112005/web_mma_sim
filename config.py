@@ -57,6 +57,10 @@ FIGHTER_ARCHETYPES_DATA = {
     # Hybrid/All-rounders
     "Wrestle-Boxer": {"weights": {"KO": 25, "TKO": 30, "SUB": 15, "DEC": 25}, "description": "Lối đánh toàn diện, dùng boxing để thiết lập vật hoặc dùng vật để tạo cơ hội cho striking."},
     "Pressure Fighter": {"weights": {"KO": 15, "TKO": 40, "SUB": 10, "DEC": 30}, "description": "Luôn tiến về phía trước, dồn ép đối thủ vào lưới và bào mòn họ bằng cả striking và grappling."},
+    "Violent Virtuoso / Nghệ Sĩ Bạo Lực": {
+        "weights": {"KO": 28, "TKO": 35, "SUB": 35, "DEC": 2},
+        "description": "Đây là hình mẫu võ sĩ hoàn hảo của kỷ nguyên mới. Sở hữu bộ kỹ năng toàn diện đến đáng sợ, họ có thể knockout đối thủ bằng một đòn duy nhất, áp đảo bằng Ground and Pound (TKO), hoặc siết ngạt trên sàn đấu (Submission). Phong cách của họ là sự tổng hòa của áp lực và bản năng 'sát thủ', luôn tìm kiếm cơ hội kết liễu và hiếm khi để trận đấu kéo dài đến quyết định của giám định."
+    },
     "Clinch Fighter / Dirty Boxer": {"weights": {"KO": 10, "TKO": 45, "SUB": 5, "DEC": 35}, "description": "Bậc thầy ép lưới, kiểm soát và bào mòn đối thủ bằng các đòn gối, chỏ và đấm tầm gần."},
     # Specialists/Unique Styles
     "One-Round Monster": {"weights": {"KO": 50, "TKO": 30, "SUB": 15, "DEC": 0}, "description": "Cực kỳ bùng nổ và nguy hiểm trong hiệp 1, nhưng thể lực giảm sút nhanh chóng."},

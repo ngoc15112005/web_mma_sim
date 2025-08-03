@@ -1,28 +1,53 @@
 [
     {
         "fight_result": {
-            "score_a": 2,
-            "score_b": 0,
-            "result_description": "✅ Thắng/Thua tuyệt đối (2-0) – kiểm soát hoàn toàn thế trận",
+            "score_a": 11,
+            "score_b": 8,
+            "result_description": "✅ Thắng/Thua thuyết phục (11-8) – thể hiện sự vượt trội",
             "finish_info": {
-                "archetype_name": "BJJ Specialist",
-                "archetype_description": "Bậc thầy địa chiến, mục tiêu chính là đưa trận đấu xuống sàn và tìm kiếm đòn khóa siết.",
-                "description": "SUB – Triangle Choke",
-                "method_type": "SUB"
+                "archetype_name": "Unorthodox Striker",
+                "archetype_description": "Sử dụng các kỹ thuật khó đoán (Karate, Capoeira), tạo ra những cú KO bất ngờ.",
+                "description": "KO – Body Shot",
+                "method_type": "KO"
             },
             "time_info": {
-                "num_rounds": 3,
-                "round": 2,
-                "minute": 4,
-                "second": 24,
-                "note": "Kết thúc bằng SUB tại hiệp 2, phút 4:24"
+                "num_rounds": 5,
+                "round": 3,
+                "minute": 2,
+                "second": 38,
+                "note": "Kết thúc bằng KO tại hiệp 3, phút 2:38"
             }
         },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "BJJ Specialist",
-        "archetype_b_name": "Durable Grinder",
-        "entry_id": "f0060dd3-bc45-4833-a665-359a5c6c99d1"
+        "class_a_name": "Huyền thoại (Legend)",
+        "class_b_name": "Nhà vô địch (Champion)",
+        "archetype_a_name": "Unorthodox Striker",
+        "archetype_b_name": "Movement-Based Striker / Point Fighter",
+        "entry_id": "e843a696-f8e3-402b-a924-19569afc7d46"
+    },
+    {
+        "fight_result": {
+            "score_a": 9,
+            "score_b": 4,
+            "result_description": "✅ Áp đảo (9-4) – hoàn toàn làm chủ trận đấu",
+            "finish_info": {
+                "archetype_name": "One-Round Monster",
+                "archetype_description": "Cực kỳ bùng nổ và nguy hiểm trong hiệp 1, nhưng thể lực giảm sút nhanh chóng.",
+                "description": "KO – KO (Đòn Slam)",
+                "method_type": "KO"
+            },
+            "time_info": {
+                "num_rounds": 5,
+                "round": 1,
+                "minute": 3,
+                "second": 57,
+                "note": "Kết thúc bằng KO tại hiệp 1, phút 3:57"
+            }
+        },
+        "class_a_name": "Huyền thoại (Legend)",
+        "class_b_name": "Nhà vô địch (Champion)",
+        "archetype_a_name": "One-Round Monster",
+        "archetype_b_name": "Movement-Based Striker / Point Fighter",
+        "entry_id": "449d29f1-22ae-4a07-9632-df44a348c9ad"
     },
     {
         "fight_result": {
@@ -32,646 +57,21 @@
             "finish_info": {
                 "archetype_name": "BJJ Specialist",
                 "archetype_description": "Bậc thầy địa chiến, mục tiêu chính là đưa trận đấu xuống sàn và tìm kiếm đòn khóa siết.",
-                "description": "SUB – Von Flue Choke",
-                "method_type": "SUB"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 2,
-                "minute": 2,
-                "second": 0,
-                "note": "Kết thúc bằng SUB tại hiệp 2, phút 2:00"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "BJJ Specialist",
-        "archetype_b_name": "Durable Grinder",
-        "entry_id": "3f9cb49d-6c0a-4283-ac46-2809fe7611d6"
-    },
-    {
-        "fight_result": {
-            "score_a": 1,
-            "score_b": 6,
-            "result_description": "❌ Áp đảo (6-1) – hoàn toàn làm chủ trận đấu",
-            "finish_info": {
-                "archetype_name": "Durable Grinder",
-                "archetype_description": "Sở hữu 'cằm sắt' và sức bền phi thường, thường kéo đối thủ vào cuộc chiến thể lực.",
-                "description": "SUB – Peruvian Necktie",
-                "method_type": "SUB"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 2,
-                "minute": 2,
-                "second": 29,
-                "note": "Kết thúc bằng SUB tại hiệp 2, phút 2:29"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "BJJ Specialist",
-        "archetype_b_name": "Durable Grinder",
-        "entry_id": "420d0925-460b-41ca-9eaf-617cf15f9488"
-    },
-    {
-        "fight_result": {
-            "score_a": 1,
-            "score_b": 0,
-            "result_description": "✅ Thắng/Thua tuyệt đối (1-0) – kiểm soát hoàn toàn thế trận",
-            "finish_info": {
-                "archetype_name": "BJJ Specialist",
-                "archetype_description": "Bậc thầy địa chiến, mục tiêu chính là đưa trận đấu xuống sàn và tìm kiếm đòn khóa siết.",
-                "description": "SUB – Ezekiel Choke",
-                "method_type": "SUB"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 3,
-                "minute": 3,
-                "second": 42,
-                "note": "Kết thúc bằng SUB tại hiệp 3, phút 3:42"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "BJJ Specialist",
-        "archetype_b_name": "Durable Grinder",
-        "entry_id": "b7383643-e0b2-47a0-be71-1a24336234b9"
-    },
-    {
-        "fight_result": {
-            "score_a": 5,
-            "score_b": 7,
-            "result_description": "❌ Thắng/Thua thuyết phục (7-5) – thể hiện sự vượt trội",
-            "finish_info": {
-                "archetype_name": "Durable Grinder",
-                "archetype_description": "Sở hữu 'cằm sắt' và sức bền phi thường, thường kéo đối thủ vào cuộc chiến thể lực.",
-                "description": "KO – Elbow",
-                "method_type": "KO"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 2,
-                "minute": 4,
-                "second": 23,
-                "note": "Kết thúc bằng KO tại hiệp 2, phút 4:23"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "BJJ Specialist",
-        "archetype_b_name": "Durable Grinder",
-        "entry_id": "ce247d39-344c-4224-b1d9-2a3411957bb7"
-    },
-    {
-        "fight_result": {
-            "score_a": 4,
-            "score_b": 8,
-            "result_description": "❌ Áp đảo (8-4) – hoàn toàn làm chủ trận đấu",
-            "finish_info": {
-                "archetype_name": "Durable Grinder",
-                "archetype_description": "Sở hữu 'cằm sắt' và sức bền phi thường, thường kéo đối thủ vào cuộc chiến thể lực.",
-                "description": "Thắng điểm đồng thuận (Unanimous Decision)",
+                "description": "Thắng điểm chia (Split Decision)",
                 "method_type": "DEC"
             },
             "time_info": {
-                "num_rounds": 3,
-                "round": 3,
+                "num_rounds": 5,
+                "round": 5,
                 "minute": 5,
                 "second": 0,
                 "note": "Kết thúc bằng điểm số sau hiệp cuối cùng"
             }
         },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
+        "class_a_name": "Huyền thoại (Legend)",
+        "class_b_name": "Nhà vô địch (Champion)",
         "archetype_a_name": "BJJ Specialist",
-        "archetype_b_name": "Durable Grinder",
-        "entry_id": "2111232d-387b-495a-8ac5-6628a1acb04d"
-    },
-    {
-        "fight_result": {
-            "score_a": 2,
-            "score_b": 6,
-            "result_description": "❌ Áp đảo (6-2) – hoàn toàn làm chủ trận đấu",
-            "finish_info": {
-                "archetype_name": "Durable Grinder",
-                "archetype_description": "Sở hữu 'cằm sắt' và sức bền phi thường, thường kéo đối thủ vào cuộc chiến thể lực.",
-                "description": "TKO – Combo đấm áp đảo",
-                "method_type": "TKO"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 3,
-                "minute": 0,
-                "second": 23,
-                "note": "Kết thúc bằng TKO tại hiệp 3, phút 0:23"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "BJJ Specialist",
-        "archetype_b_name": "Durable Grinder",
-        "entry_id": "5c957464-df33-43c0-91d4-c0cff1c396a7"
-    },
-    {
-        "fight_result": {
-            "score_a": 6,
-            "score_b": 6,
-            "result_description": "🤝 Hòa mãn nhãn (6-6) – cống hiến một cuộc đôi công đỉnh cao!",
-            "finish_info": {
-                "archetype_name": "Không có",
-                "archetype_description": "Trận đấu kết thúc với tỷ số hòa.",
-                "description": "Hòa điểm đồng thuận (Draw)",
-                "method_type": "DRAW"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 3,
-                "minute": 5,
-                "second": 0,
-                "note": "Kết thúc bằng điểm số sau hiệp cuối cùng"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "BJJ Specialist",
-        "archetype_b_name": "Durable Grinder",
-        "entry_id": "a762d86f-93b0-4e1d-9879-a059dfb0b5cd"
-    },
-    {
-        "fight_result": {
-            "score_a": 2,
-            "score_b": 6,
-            "result_description": "❌ Áp đảo (6-2) – hoàn toàn làm chủ trận đấu",
-            "finish_info": {
-                "archetype_name": "Durable Grinder",
-                "archetype_description": "Sở hữu 'cằm sắt' và sức bền phi thường, thường kéo đối thủ vào cuộc chiến thể lực.",
-                "description": "Thắng điểm đồng thuận (Unanimous Decision)",
-                "method_type": "DEC"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 3,
-                "minute": 5,
-                "second": 0,
-                "note": "Kết thúc bằng điểm số sau hiệp cuối cùng"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "BJJ Specialist",
-        "archetype_b_name": "Durable Grinder",
-        "entry_id": "a16a906b-d0e9-4f9a-8c5e-94c91131f7d0"
-    },
-    {
-        "fight_result": {
-            "score_a": 3,
-            "score_b": 7,
-            "result_description": "❌ Áp đảo (7-3) – hoàn toàn làm chủ trận đấu",
-            "finish_info": {
-                "archetype_name": "Durable Grinder",
-                "archetype_description": "Sở hữu 'cằm sắt' và sức bền phi thường, thường kéo đối thủ vào cuộc chiến thể lực.",
-                "description": "Thắng do đối thủ phạm luật (Giữ lồng/quần liên tục)",
-                "method_type": "DQ"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 1,
-                "minute": 4,
-                "second": 22,
-                "note": "Kết thúc bằng DQ tại hiệp 1, phút 4:22"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "BJJ Specialist",
-        "archetype_b_name": "Durable Grinder",
-        "entry_id": "e3d3c680-d1ba-4c4d-a67f-effb0728bcbe"
-    },
-    {
-        "fight_result": {
-            "score_a": 7,
-            "score_b": 4,
-            "result_description": "✅ Thắng/Thua thuyết phục (7-4) – thể hiện sự vượt trội",
-            "finish_info": {
-                "archetype_name": "BJJ Specialist",
-                "archetype_description": "Bậc thầy địa chiến, mục tiêu chính là đưa trận đấu xuống sàn và tìm kiếm đòn khóa siết.",
-                "description": "SUB – Peruvian Necktie",
-                "method_type": "SUB"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 1,
-                "minute": 4,
-                "second": 9,
-                "note": "Kết thúc bằng SUB tại hiệp 1, phút 4:09"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "BJJ Specialist",
-        "archetype_b_name": "Durable Grinder",
-        "entry_id": "a24efb49-b78d-4dbb-9dd6-5804cc9a4f4d"
-    },
-    {
-        "fight_result": {
-            "score_a": 3,
-            "score_b": 4,
-            "result_description": "❌ Thắng/Thua nghẹt thở (4-3) – vượt qua trong gang tấc",
-            "finish_info": {
-                "archetype_name": "Durable Grinder",
-                "archetype_description": "Sở hữu 'cằm sắt' và sức bền phi thường, thường kéo đối thủ vào cuộc chiến thể lực.",
-                "description": "Thắng do đối thủ phạm luật (Giữ lồng/quần liên tục)",
-                "method_type": "DQ"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 2,
-                "minute": 2,
-                "second": 1,
-                "note": "Kết thúc bằng DQ tại hiệp 2, phút 2:01"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "BJJ Specialist",
-        "archetype_b_name": "Durable Grinder",
-        "entry_id": "026d66e0-f7f3-43c7-b31d-029acad4edaa"
-    },
-    {
-        "fight_result": {
-            "score_a": 1,
-            "score_b": 6,
-            "result_description": "❌ Áp đảo (6-1) – hoàn toàn làm chủ trận đấu",
-            "finish_info": {
-                "archetype_name": "Durable Grinder",
-                "archetype_description": "Sở hữu 'cằm sắt' và sức bền phi thường, thường kéo đối thủ vào cuộc chiến thể lực.",
-                "description": "Thắng điểm đa số (Majority Decision)",
-                "method_type": "DEC"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 3,
-                "minute": 5,
-                "second": 0,
-                "note": "Kết thúc bằng điểm số sau hiệp cuối cùng"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "BJJ Specialist",
-        "archetype_b_name": "Durable Grinder",
-        "entry_id": "b81cd507-297d-4f22-9d28-f3aa2de7bf2e"
-    },
-    {
-        "fight_result": {
-            "score_a": 2,
-            "score_b": 2,
-            "result_description": "🤝 Hòa kịch tính (2-2) – một trận đấu cân tài cân sức",
-            "finish_info": {
-                "archetype_name": "Không có",
-                "archetype_description": "Trận đấu kết thúc với tỷ số hòa.",
-                "description": "Hòa điểm đồng thuận (Draw)",
-                "method_type": "DRAW"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 3,
-                "minute": 5,
-                "second": 0,
-                "note": "Kết thúc bằng điểm số sau hiệp cuối cùng"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "BJJ Specialist",
-        "archetype_b_name": "Durable Grinder",
-        "entry_id": "bfa2e126-3c8e-4829-b172-6f7e8f6db242"
-    },
-    {
-        "fight_result": {
-            "score_a": 4,
-            "score_b": 6,
-            "result_description": "❌ Thắng/Thua thuyết phục (6-4) – thể hiện sự vượt trội",
-            "finish_info": {
-                "archetype_name": "Durable Grinder",
-                "archetype_description": "Sở hữu 'cằm sắt' và sức bền phi thường, thường kéo đối thủ vào cuộc chiến thể lực.",
-                "description": "Thắng điểm đa số (Majority Decision)",
-                "method_type": "DEC"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 3,
-                "minute": 5,
-                "second": 0,
-                "note": "Kết thúc bằng điểm số sau hiệp cuối cùng"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "BJJ Specialist",
-        "archetype_b_name": "Durable Grinder",
-        "entry_id": "d6aa2a9b-2b26-43e1-9886-660ec0a4e73b"
-    },
-    {
-        "fight_result": {
-            "score_a": 4,
-            "score_b": 5,
-            "result_description": "❌ Sống sót sau một cuộc chiến huyền thoại (5-4) – chiến thắng bằng ý chí!",
-            "finish_info": {
-                "archetype_name": "Durable Grinder",
-                "archetype_description": "Sở hữu 'cằm sắt' và sức bền phi thường, thường kéo đối thủ vào cuộc chiến thể lực.",
-                "description": "TKO – TKO (Chấn thương/Injury)",
-                "method_type": "TKO"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 3,
-                "minute": 1,
-                "second": 37,
-                "note": "Kết thúc bằng TKO tại hiệp 3, phút 1:37"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "BJJ Specialist",
-        "archetype_b_name": "Durable Grinder",
-        "entry_id": "1cc6dc16-a4d4-4874-b570-ddab9c9785fd"
-    },
-    {
-        "fight_result": {
-            "score_a": 4,
-            "score_b": 3,
-            "result_description": "✅ Thắng/Thua nghẹt thở (4-3) – vượt qua trong gang tấc",
-            "finish_info": {
-                "archetype_name": "BJJ Specialist",
-                "archetype_description": "Bậc thầy địa chiến, mục tiêu chính là đưa trận đấu xuống sàn và tìm kiếm đòn khóa siết.",
-                "description": "TKO – TKO (Bác sĩ dừng trận - Vết rách)",
-                "method_type": "TKO"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 1,
-                "minute": 3,
-                "second": 11,
-                "note": "Kết thúc bằng TKO tại hiệp 1, phút 3:11"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "BJJ Specialist",
-        "archetype_b_name": "Durable Grinder",
-        "entry_id": "1eb0fbc9-3545-46b0-92e7-91217be8188c"
-    },
-    {
-        "fight_result": {
-            "score_a": 1,
-            "score_b": 5,
-            "result_description": "❌ Áp đảo (5-1) – hoàn toàn làm chủ trận đấu",
-            "finish_info": {
-                "archetype_name": "Durable Grinder",
-                "archetype_description": "Sở hữu 'cằm sắt' và sức bền phi thường, thường kéo đối thủ vào cuộc chiến thể lực.",
-                "description": "Thắng điểm đồng thuận (Unanimous Decision)",
-                "method_type": "DEC"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 3,
-                "minute": 5,
-                "second": 0,
-                "note": "Kết thúc bằng điểm số sau hiệp cuối cùng"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "BJJ Specialist",
-        "archetype_b_name": "Durable Grinder",
-        "entry_id": "c098f688-58b2-4e1b-af53-ce74949a1719"
-    },
-    {
-        "fight_result": {
-            "score_a": 5,
-            "score_b": 7,
-            "result_description": "❌ Thắng/Thua thuyết phục (7-5) – thể hiện sự vượt trội",
-            "finish_info": {
-                "archetype_name": "Durable Grinder",
-                "archetype_description": "Sở hữu 'cằm sắt' và sức bền phi thường, thường kéo đối thủ vào cuộc chiến thể lực.",
-                "description": "Thắng điểm đồng thuận (Unanimous Decision)",
-                "method_type": "DEC"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 3,
-                "minute": 5,
-                "second": 0,
-                "note": "Kết thúc bằng điểm số sau hiệp cuối cùng"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "BJJ Specialist",
-        "archetype_b_name": "Durable Grinder",
-        "entry_id": "f262ea2d-7047-4fff-a1ce-ebe2094e8ee1"
-    },
-    {
-        "fight_result": {
-            "score_a": 4,
-            "score_b": 6,
-            "result_description": "❌ Thắng/Thua thuyết phục (6-4) – thể hiện sự vượt trội",
-            "finish_info": {
-                "archetype_name": "Power Puncher / Brawler",
-                "archetype_description": "Dựa vào sức mạnh, luôn tìm kiếm một cú đấm 'trời giáng' để kết thúc trận đấu.",
-                "description": "KO – Body Shot",
-                "method_type": "KO"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 2,
-                "minute": 1,
-                "second": 34,
-                "note": "Kết thúc bằng KO tại hiệp 2, phút 1:34"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "Technical Boxer",
-        "archetype_b_name": "Power Puncher / Brawler",
-        "entry_id": "d60abc9f-56cc-4d66-9cd5-35198606d492"
-    },
-    {
-        "fight_result": {
-            "score_a": 0,
-            "score_b": 4,
-            "result_description": "❌ Màn hủy diệt (4-0) – một buổi học miễn phí cho đối thủ",
-            "finish_info": {
-                "archetype_name": "Power Puncher / Brawler",
-                "archetype_description": "Dựa vào sức mạnh, luôn tìm kiếm một cú đấm 'trời giáng' để kết thúc trận đấu.",
-                "description": "KO – Body Shot",
-                "method_type": "KO"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 1,
-                "minute": 3,
-                "second": 17,
-                "note": "Kết thúc bằng KO tại hiệp 1, phút 3:17"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "Technical Boxer",
-        "archetype_b_name": "Power Puncher / Brawler",
-        "entry_id": "f18a22a8-bfd2-4023-b198-e21489c0ef11"
-    },
-    {
-        "fight_result": {
-            "score_a": 6,
-            "score_b": 2,
-            "result_description": "✅ Áp đảo (6-2) – hoàn toàn làm chủ trận đấu",
-            "finish_info": {
-                "archetype_name": "Technical Boxer",
-                "archetype_description": "Bậc thầy về footwork và combo chính xác, thường thắng bằng TKO hoặc điểm số áp đảo.",
-                "description": "Thắng điểm đa số (Majority Decision)",
-                "method_type": "DEC"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 3,
-                "minute": 5,
-                "second": 0,
-                "note": "Kết thúc bằng điểm số sau hiệp cuối cùng"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "Technical Boxer",
-        "archetype_b_name": "Power Puncher / Brawler",
-        "entry_id": "021f4908-7b25-45ab-92bc-66dac20cb69b"
-    },
-    {
-        "fight_result": {
-            "score_a": 5,
-            "score_b": 6,
-            "result_description": "❌ Sống sót sau một cuộc chiến huyền thoại (6-5) – chiến thắng bằng ý chí!",
-            "finish_info": {
-                "archetype_name": "Power Puncher / Brawler",
-                "archetype_description": "Dựa vào sức mạnh, luôn tìm kiếm một cú đấm 'trời giáng' để kết thúc trận đấu.",
-                "description": "KO – Gối bay",
-                "method_type": "KO"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 1,
-                "minute": 4,
-                "second": 1,
-                "note": "Kết thúc bằng KO tại hiệp 1, phút 4:01"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "Technical Boxer",
-        "archetype_b_name": "Power Puncher / Brawler",
-        "entry_id": "f5393d85-31a5-48f9-8903-bac89aacd22e"
-    },
-    {
-        "fight_result": {
-            "score_a": 3,
-            "score_b": 5,
-            "result_description": "❌ Thắng/Thua thuyết phục (5-3) – thể hiện sự vượt trội",
-            "finish_info": {
-                "archetype_name": "Power Puncher / Brawler",
-                "archetype_description": "Dựa vào sức mạnh, luôn tìm kiếm một cú đấm 'trời giáng' để kết thúc trận đấu.",
-                "description": "KO – KO (Đòn Slam)",
-                "method_type": "KO"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 2,
-                "minute": 0,
-                "second": 40,
-                "note": "Kết thúc bằng KO tại hiệp 2, phút 0:40"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "Technical Boxer",
-        "archetype_b_name": "Power Puncher / Brawler",
-        "entry_id": "6a6692c2-f24a-431f-9956-41d5c05f2808"
-    },
-    {
-        "fight_result": {
-            "score_a": 7,
-            "score_b": 5,
-            "result_description": "✅ Thắng/Thua thuyết phục (7-5) – thể hiện sự vượt trội",
-            "finish_info": {
-                "archetype_name": "Technical Boxer",
-                "archetype_description": "Bậc thầy về footwork và combo chính xác, thường thắng bằng TKO hoặc điểm số áp đảo.",
-                "description": "KO – Đá xoay",
-                "method_type": "KO"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 2,
-                "minute": 4,
-                "second": 23,
-                "note": "Kết thúc bằng KO tại hiệp 2, phút 4:23"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "Technical Boxer",
-        "archetype_b_name": "Power Puncher / Brawler",
-        "entry_id": "0cbc3c61-25fd-49b9-a119-26a9b5381ff6"
-    },
-    {
-        "fight_result": {
-            "score_a": 3,
-            "score_b": 1,
-            "result_description": "✅ Thắng/Thua thuyết phục (3-1) – thể hiện sự vượt trội",
-            "finish_info": {
-                "archetype_name": "Technical Boxer",
-                "archetype_description": "Bậc thầy về footwork và combo chính xác, thường thắng bằng TKO hoặc điểm số áp đảo.",
-                "description": "TKO – TKO (Góc ném khăn/Corner Stoppage)",
-                "method_type": "TKO"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 3,
-                "minute": 0,
-                "second": 38,
-                "note": "Kết thúc bằng TKO tại hiệp 3, phút 0:38"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "Technical Boxer",
-        "archetype_b_name": "Power Puncher / Brawler",
-        "entry_id": "35ddf841-7b8c-457d-bd6c-026a3d321c8b"
-    },
-    {
-        "fight_result": {
-            "score_a": 1,
-            "score_b": 8,
-            "result_description": "❌ Out trình hoàn toàn (8-1) – đối thủ chỉ biết chịu trận",
-            "finish_info": {
-                "archetype_name": "Technical Boxer",
-                "archetype_description": "Bậc thầy về footwork và combo chính xác, thường thắng bằng TKO hoặc điểm số áp đảo.",
-                "description": "KO – Elbow",
-                "method_type": "KO"
-            },
-            "time_info": {
-                "num_rounds": 3,
-                "round": 2,
-                "minute": 2,
-                "second": 40,
-                "note": "Kết thúc bằng KO tại hiệp 2, phút 2:40"
-            }
-        },
-        "class_a_name": "Kỳ cựu (Veteran)",
-        "class_b_name": "Kỳ cựu (Veteran)",
-        "archetype_a_name": "Technical Boxer",
-        "archetype_b_name": "Technical Boxer",
-        "entry_id": "288a1b59-aa97-47a8-abb5-6537ff91a4e2"
+        "archetype_b_name": "Movement-Based Striker / Point Fighter",
+        "entry_id": "c6e82c71-1f01-454e-b6be-ea0feea3cb74"
     }
 ]

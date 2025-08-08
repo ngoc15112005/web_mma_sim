@@ -2,7 +2,7 @@ import random
 from fighter_class import FIGHTER_CLASSES
 from finish_method import FIGHTER_ARCHETYPES
 from models import Fighter
-from simulation_engine import run_simulation
+from fight import Fight
 
 def simulate_fight(num_rounds: int):
     # Tự động chọn ngẫu nhiên đẳng cấp cho hai võ sĩ
@@ -17,8 +17,10 @@ def simulate_fight(num_rounds: int):
     fighter_a = Fighter(fighter_class=FIGHTER_CLASSES[class_a_name], archetype=archetype_a)
     fighter_b = Fighter(fighter_class=FIGHTER_CLASSES[class_b_name], archetype=archetype_b)
 
-    # 2. Chạy mô phỏng thông qua simulation_engine
-    result = run_simulation(fighter_a, fighter_b, num_rounds)
+    # 2. Tạo và chạy mô phỏng thông qua đối tượng Fight
+    fight = Fight(fighter_a, fighter_b, num_rounds)
+    fight.simulate()
+    result = fight.result
 
     # Truy cập thông tin từ đối tượng FightResult bằng thuộc tính (ví dụ: result.score_a)
     print("\n🎮 MÔ PHỎNG TRẬN ĐẤU MMA")

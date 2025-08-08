@@ -2,9 +2,9 @@ import streamlit as st
 import random
 from finish_method import FIGHTER_ARCHETYPES
 from fighter_class import FIGHTER_CLASSES
+from fight import Fight
 from models import Fighter, HistoryEntry, FightResult
-import history_manager
-from simulation_engine import run_simulation as core_run_simulation
+import history_manager 
 
 # Hằng số để giới hạn số lượng kết quả trong lịch sử
 MAX_HISTORY_SIZE = 50
@@ -54,9 +54,12 @@ def run_fight_simulation(
     archetype_a_obj = FIGHTER_ARCHETYPES[archetype_a_name]
     archetype_b_obj = FIGHTER_ARCHETYPES[archetype_b_name]
     
-    fighter_a = Fighter(fighter_class=FIGHTER_CLASSES[class_a_name], archetype=archetype_a_obj)    
-    fighter_b = Fighter(fighter_class=FIGHTER_CLASSES[class_b_name], archetype=archetype_b_obj)    
-    return core_run_simulation(fighter_a, fighter_b, num_rounds)
+    fighter_a = Fighter(fighter_class=FIGHTER_CLASSES[class_a_name], archetype=archetype_a_obj)
+    fighter_b = Fighter(fighter_class=FIGHTER_CLASSES[class_b_name], archetype=archetype_b_obj)
+    
+    fight = Fight(fighter_a, fighter_b, num_rounds)
+    fight.simulate()
+    return fight.result
 
 def update_history(
     fight_result: FightResult, 

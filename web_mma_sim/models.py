@@ -1,6 +1,6 @@
 import random
 from dataclasses import dataclass, field
-from typing import Tuple, Dict, Optional, List
+from typing import Tuple, Dict, Optional
 import uuid
 
 @dataclass
@@ -16,11 +16,6 @@ class Archetype:
     name: str
     description: str
     weights: Dict[str, int]
-    # Thêm các thuộc tính mới cho các đòn sở trường
-    preferred_kos: Optional[List[str]] = None
-    preferred_tkos: Optional[List[str]] = None
-    # Có thể là một danh sách đơn giản, hoặc một dict có trọng số (common, uncommon, rare)
-    preferred_submissions: Optional[List[str] | Dict[str, List[str]]] = None
 
 @dataclass
 class Fighter:

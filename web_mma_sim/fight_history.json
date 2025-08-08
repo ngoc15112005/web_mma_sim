@@ -1,0 +1,77 @@
+[
+    {
+        "fight_result": {
+            "score_a": 11,
+            "score_b": 8,
+            "result_description": "✅ Thắng/Thua thuyết phục (11-8) – thể hiện sự vượt trội",
+            "finish_info": {
+                "archetype_name": "Unorthodox Striker",
+                "archetype_description": "Sử dụng các kỹ thuật khó đoán (Karate, Capoeira), tạo ra những cú KO bất ngờ.",
+                "description": "KO – Body Shot",
+                "method_type": "KO"
+            },
+            "time_info": {
+                "num_rounds": 5,
+                "round": 3,
+                "minute": 2,
+                "second": 38,
+                "note": "Kết thúc bằng KO tại hiệp 3, phút 2:38"
+            }
+        },
+        "class_a_name": "Huyền thoại (Legend)",
+        "class_b_name": "Nhà vô địch (Champion)",
+        "archetype_a_name": "Unorthodox Striker",
+        "archetype_b_name": "Movement-Based Striker / Point Fighter",
+        "entry_id": "e843a696-f8e3-402b-a924-19569afc7d46"
+    },
+    {
+        "fight_result": {
+            "score_a": 9,
+            "score_b": 4,
+            "result_description": "✅ Áp đảo (9-4) – hoàn toàn làm chủ trận đấu",
+            "finish_info": {
+                "archetype_name": "One-Round Monster",
+                "archetype_description": "Cực kỳ bùng nổ và nguy hiểm trong hiệp 1, nhưng thể lực giảm sút nhanh chóng.",
+                "description": "KO – KO (Đòn Slam)",
+                "method_type": "KO"
+            },
+            "time_info": {
+                "num_rounds": 5,
+                "round": 1,
+                "minute": 3,
+                "second": 57,
+                "note": "Kết thúc bằng KO tại hiệp 1, phút 3:57"
+            }
+        },
+        "class_a_name": "Huyền thoại (Legend)",
+        "class_b_name": "Nhà vô địch (Champion)",
+        "archetype_a_name": "One-Round Monster",
+        "archetype_b_name": "Movement-Based Striker / Point Fighter",
+        "entry_id": "449d29f1-22ae-4a07-9632-df44a348c9ad"
+    },
+    {
+        "fight_result": {
+            "score_a": 7,
+            "score_b": 3,
+            "result_description": "✅ Áp đảo (7-3) – hoàn toàn làm chủ trận đấu",
+            "finish_info": {
+                "archetype_name": "BJJ Specialist",
+                "archetype_description": "Bậc thầy địa chiến, mục tiêu chính là đưa trận đấu xuống sàn và tìm kiếm đòn khóa siết.",
+                "description": "Thắng điểm chia (Split Decision)",
+                "method_type": "DEC"
+            },
+            "time_info": {
+                "num_rounds": 5,
+                "round": 5,
+                "minute": 5,
+                "second": 0,
+                "note": "Kết thúc bằng điểm số sau hiệp cuối cùng"
+            }
+        },
+        "class_a_name": "Huyền thoại (Legend)",
+        "class_b_name": "Nhà vô địch (Champion)",
+        "archetype_a_name": "BJJ Specialist",
+        "archetype_b_name": "Movement-Based Striker / Point Fighter",
+        "entry_id": "c6e82c71-1f01-454e-b6be-ea0feea3cb74"
+    }
+]

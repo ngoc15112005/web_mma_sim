@@ -113,6 +113,17 @@ FIGHTER_ARCHETYPES_DATA = {
         "preferred_submissions": ["Kimura", "Guillotine Choke", "Kneebar", "Americana"]
     },
     # Hybrid/All-rounders
+    "Balanced Finisher / MMA Generalist": {
+        "weights": {"KO": 30, "TKO": 30, "SUB": 30, "DEC": 10},
+        "description": (
+            "Một võ sĩ toàn diện, có khả năng kết thúc trận đấu ở bất kỳ vị trí nào: "
+            "knockout bằng striking, TKO bằng áp lực và ground-and-pound, hoặc khóa siết "
+            "đối thủ trên sàn. Luôn mang lại cảm giác khó đoán cho đối thủ."
+        ),
+        "preferred_kos": ["Đấm thẳng mặt", "Counterpunch", "Đá đầu"],
+        "preferred_tkos": ["Ground and Pound", "Combo đấm áp đảo", "TKO (Đầu hàng vì dính đòn/Submission to Strikes)"],
+        "preferred_submissions": ["Rear Naked Choke", "Armbar", "Guillotine Choke", "Triangle Choke"]
+    },
     "Wrestle-Boxer": {
         "weights": {"KO": 25, "TKO": 30, "SUB": 15, "DEC": 25},
         "description": "Lối đánh toàn diện, dùng boxing để thiết lập vật hoặc dùng vật để tạo cơ hội cho striking.",

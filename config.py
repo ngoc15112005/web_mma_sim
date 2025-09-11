@@ -90,6 +90,26 @@ FIGHTER_ARCHETYPES_DATA = {
             "rare": ["Twister", "Peruvian Necktie", "Ezekiel Choke"]
         }
     },
+    "Dagestani Mauler": {
+        "weights": {"KO": 5, "TKO": 45, "SUB": 35, "DEC": 15},
+        "description": (
+        "Phong cách đặc trưng của Dagestan: áp lực wrestling liên tục, "
+        "khóa chân (leg rides), ép vào lồng và kiểm soát từ trên. "
+        "Thường kết thúc bằng ground-and-pound tàn nhẫn hoặc siết submission "
+        "sau khi đối thủ đã kiệt sức."
+        ),
+        "preferred_tkos": [
+        "Ground and Pound", 
+        "TKO (Đầu hàng vì dính đòn/Submission to Strikes)", 
+        "TKO (Bỏ cuộc giữa hiệp/Retirement)"
+        ],
+        "preferred_submissions": {
+        "common": ["Rear Naked Choke", "Arm Triangle", "Guillotine Choke"],
+        "uncommon": ["Kimura", "D'Arce Choke", "Anaconda Choke"],
+        "rare": ["Ezekiel Choke"]  # đặc sản Dagestan luôn thích áp dụng mấy đòn lạ
+        }
+    },
+
     "Wrestler": {
         "weights": {"KO": 5, "TKO": 45, "SUB": 10, "DEC": 35},
         "description": "Kỹ năng vật và quật ngã thượng thừa, bào mòn thể lực đối thủ bằng Ground and Pound.",

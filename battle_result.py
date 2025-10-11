@@ -2,53 +2,38 @@ import random
 
 def analyze_battle_result_expanded(a, b):
     """
-    Phân tích kết quả trận đấu với phạm vi điểm mở rộng (0-7).
-    Cung cấp các mô tả chi tiết và đa dạng hơn.
+    Phân tích kết quả trận đấu với thang điểm mở rộng (0-100+).
+    Trả về mô tả tiếng Việt tương ứng với mức độ chênh lệch.
     """
-    # --- 1. XỬ LÝ HÒA ---
+    # --- 1. Xử lý hòa ---
     if a == b:
-        if a <= 1:
-            return f"🤝 Hòa nhạt nhẽo ({a}-{b}) – một trận đấu thiếu điểm nhấn"
-        elif a <= 4:
-            return f"🤝 Hòa kịch tính ({a}-{b}) – một trận đấu cân tài cân sức"
-        else: # a > 4
-            return f"🤝 Hòa mãn nhãn ({a}-{b}) – cống hiến một cuộc đôi công đỉnh cao!"
+        if a <= 20:
+            return f"Hòa thăm dò ({a}-{b}) trong thế trận chậm rãi"
+        elif a <= 60:
+            return f"Hòa kịch tính ({a}-{b}) – hai bên ăn miếng trả miếng"
+        else:
+            return f"Hòa mãn nhãn ({a}-{b}) sau một màn đôi công dữ dội!"
 
-    # --- 2. XÁC ĐỊNH THẮNG/THUA ---
+    # --- 2. Xác định điểm thắng/thua ---
     if a > b:
         diem_thang, diem_thua = a, b
-        prefix_thang, prefix_thua = "✅", "❌"
-        nguoi_thang = "Bạn"
     else:
         diem_thang, diem_thua = b, a
-        prefix_thang, prefix_thua = "❌", "✅"
-        nguoi_thang = "Đối thủ"
 
     diff = diem_thang - diem_thua
-    
-    # --- 3. MÔ TẢ DỰA TRÊN CHÊNH LỆCH ---
-    # Trường hợp thắng/thua trắng
-    if diem_thua == 0:
-        if diem_thang <= 2:
-            return f"{prefix_thang} Thắng/Thua tuyệt đối ({diem_thang}-{diem_thua}) – kiểm soát hoàn toàn thế trận"
-        else:
-            return f"{prefix_thang} Màn hủy diệt ({diem_thang}-{diem_thua}) – một buổi học miễn phí cho đối thủ"
 
-    # Trường hợp thắng/thua sít sao
-    if diff == 1:
-        if diem_thang <= 4:
-            return f"{prefix_thang} Thắng/Thua nghẹt thở ({diem_thang}-{diem_thua}) – vượt qua trong gang tấc"
+    # --- 3. Mô tả dựa trên chênh lệch ---
+    if diem_thua == 0:
+        if diem_thang <= 40:
+            return f"Chặn đứng hoàn toàn ({diem_thang}-{diem_thua}) – đối thủ không kịp nhập cuộc"
         else:
-            return f"{prefix_thang} Sống sót sau một cuộc chiến huyền thoại ({diem_thang}-{diem_thua}) – chiến thắng bằng ý chí!"
-            
-    # Trường hợp thắng/thua thuyết phục
-    elif diff <= 3:
-        return f"{prefix_thang} Thắng/Thua thuyết phục ({diem_thang}-{diem_thua}) – thể hiện sự vượt trội"
-        
-    # Trường hợp thắng/thua áp đảo
-    elif diff <= 5:
-        return f"{prefix_thang} Áp đảo ({diem_thang}-{diem_thua}) – hoàn toàn làm chủ trận đấu"
-        
-    # Trường hợp thắng/thua hủy diệt
-    else: # diff > 5
-        return f"{prefix_thang} Out trình hoàn toàn ({diem_thang}-{diem_thua}) – đối thủ chỉ biết chịu trận"
+            return f"Hủy diệt tuyệt đối ({diem_thang}-{diem_thua}) – một chiều từ đầu tới cuối"
+
+    if diff <= 15:
+        return f"Thắng sát nút ({diem_thang}-{diem_thua}) – phân định bởi những khoảnh khắc nhỏ"
+    elif diff <= 35:
+        return f"Thắng thuyết phục ({diem_thang}-{diem_thua}) – kiểm soát phần lớn thời lượng"
+    elif diff <= 60:
+        return f"Áp đảo toàn diện ({diem_thang}-{diem_thua}) – áp lực liên tục dồn lên đối thủ"
+    else:
+        return f"Outclass hoàn toàn ({diem_thang}-{diem_thua}) – đẳng cấp cách biệt rõ rệt"

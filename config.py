@@ -4,7 +4,7 @@ Tập trung tất cả các hằng số, trọng số và các giá trị cấu 
 """
 
 # --- Cấu hình Logic Trận đấu (fight_logic.py) ---
-PERFORMANCE_FACTOR_RANGE = (-2, 4) # (min, max) của yếu tố phong độ
+PERFORMANCE_FACTOR_RANGE = (-25, 35) # (min, max) của yếu tố phong độ
 
 # --- Cấu hình Phương thức Kết liễu (finish_method.py) ---
 FINISH_METHODS = {
@@ -169,15 +169,15 @@ FIGHTER_ARCHETYPES_DATA = {
     "Glass Cannon": {"weights": {"KO": 65, "TKO": 25, "SUB": 2, "DEC": 3}, "description": "Sức tấn công cực kỳ khủng khiếp nhưng khả năng chịu đòn rất kém. 'Được ăn cả, ngã về không'."}
 }
 
-FINISH_SCORE_DIFF_OUTCLASS_THRESHOLD = 6
-FINISH_SCORE_DIFF_CLOSE_THRESHOLD = 1
+FINISH_SCORE_DIFF_OUTCLASS_THRESHOLD = 50
+FINISH_SCORE_DIFF_CLOSE_THRESHOLD = 15
 FINISH_OUTCLASS_MULTIPLIERS = {"KO": 2.0, "TKO": 1.5, "SUB": 1.5, "DEC": 0.1}
 FINISH_CLOSE_MULTIPLIERS = {"DEC": 2.0}
 FINISH_STATIC_WEIGHTS = {"DQ": 2, "NC": 1}
 
 # --- Cấu hình Thời gian Trận đấu (fight_time.py) ---
-TIME_SCORE_DIFF_OUTCLASS_THRESHOLD = 6
-TIME_SCORE_DIFF_CLOSE_THRESHOLD = 2
+TIME_SCORE_DIFF_OUTCLASS_THRESHOLD = 50
+TIME_SCORE_DIFF_CLOSE_THRESHOLD = 20
 TIME_OUTCLASS_ROUND_MULTIPLIERS = {1: 2.0, 2: 1.5} # Hệ số cho hiệp 1, hiệp 2
 TIME_CLOSE_ROUND_MULTIPLIER = 1.2 # Hệ số cho hiệp cuối
 

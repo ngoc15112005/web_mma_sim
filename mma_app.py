@@ -185,17 +185,24 @@ def display_fight_results(entry: HistoryEntry):
 
     if result.round_summaries:
         st.markdown("#### Điểm từng hiệp (thang 10-point)")
-        st.table(
-            [
+        round_rows = []
+        textual_summary_lines = []
+        for summary in result.round_summaries:
+            round_rows.append(
                 {
                     "Hiệp": summary.round_number,
                     "A": summary.score_a,
                     "B": summary.score_b,
                     "Ghi chú": summary.note,
                 }
-                for summary in result.round_summaries
-            ]
-        )
+            )
+            textual_summary_lines.append(
+                f"Hiệp {summary.round_number}: A {summary.score_a} – B {summary.score_b}. {summary.note}"
+            )
+
+        st.table(round_rows)
+        if textual_summary_lines:
+            st.markdown("".join(f"- {line}\n" for line in textual_summary_lines))
 
         events = [to_tick_event(raw) for summary in result.round_summaries for raw in summary.events]
         events = [event for event in events if event]

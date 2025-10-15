@@ -64,6 +64,8 @@ def load_history() -> List[HistoryEntry]:
             history_entry_data["fight_result"] = fight_result
             history_entry_data.setdefault("archetype_a_name", "Không rõ")
             history_entry_data.setdefault("archetype_b_name", "Không rõ")
+            history_entry_data.setdefault("fighter_a_display", history_entry_data.get("class_a_name", "Võ sĩ A"))
+            history_entry_data.setdefault("fighter_b_display", history_entry_data.get("class_b_name", "Võ sĩ B"))
 
             history_entry = HistoryEntry(**history_entry_data)
             reconstructed_history.append(history_entry)

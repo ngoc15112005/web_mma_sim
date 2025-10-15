@@ -98,7 +98,7 @@ def to_tick_event(raw) -> TickEvent | None:
     return None
 
 
-def event_dataframe(events: Iterable[TickEvent]) -> pd.DataFrame:
+def event_dataframe(events: Iterable[TickEvent], fighter_a_name: str, fighter_b_name: str) -> pd.DataFrame:
     rows = []
     for event in events:
         if event.tick_index and TICK_PER_ROUND > 0:
@@ -106,12 +106,20 @@ def event_dataframe(events: Iterable[TickEvent]) -> pd.DataFrame:
         else:
             tick_offset = 0
         absolute_seconds = (event.round_number - 1) * SECONDS_PER_ROUND + tick_offset
+        actor_code = event.actor or "-"
+        if actor_code == "A":
+            actor_display = fighter_a_name
+        elif actor_code == "B":
+            actor_display = fighter_b_name
+        else:
+            actor_display = "-"
         rows.append(
             {
                 "round": event.round_number,
                 "tick": event.tick_index,
                 "phase": event.phase,
-                "actor": event.actor or "-",
+                "actor": actor_code,
+                "actor_display": actor_display,
                 "description": event.description,
                 "impact": event.impact,
                 "seconds": absolute_seconds,
@@ -119,11 +127,22 @@ def event_dataframe(events: Iterable[TickEvent]) -> pd.DataFrame:
             }
         )
     if not rows:
-        return pd.DataFrame(columns=["round", "tick", "phase", "actor", "description", "impact", "minutes"])
+        return pd.DataFrame(
+            columns=[
+                "round",
+                "tick",
+                "phase",
+                "actor",
+                "actor_display",
+                "description",
+                "impact",
+                "minutes",
+            ]
+        )
     return pd.DataFrame(rows)
 
 
-def render_event_timeline(df: pd.DataFrame):
+def render_event_timeline(df: pd.DataFrame, fighter_a_name: str, fighter_b_name: str):
     if df.empty:
         st.info("Chưa có log chi tiết cho trận đấu này.")
         return
@@ -133,13 +152,17 @@ def render_event_timeline(df: pd.DataFrame):
         base.mark_circle(size=85)
         .encode(
             x=alt.X("minutes", title="Phút (ước lượng)", scale=alt.Scale(zero=False)),
-            y=alt.Y("actor:N", title="Diễn viên"),
+            y=alt.Y(
+                "actor_display:N",
+                title="Võ sĩ",
+                sort=[fighter_a_name, fighter_b_name, "-"],
+            ),
             color=alt.Color("phase:N", title="Pha"),
             tooltip=[
                 alt.Tooltip("round:N", title="Hiệp"),
                 alt.Tooltip("tick:N", title="Pha"),
                 alt.Tooltip("phase:N", title="Trạng thái"),
-                alt.Tooltip("actor:N", title="Người ra đòn"),
+                alt.Tooltip("actor_display:N", title="Người ra đòn"),
                 alt.Tooltip("description:N", title="Mô tả"),
                 alt.Tooltip("impact:Q", title="Impact"),
             ],
@@ -152,7 +175,7 @@ def render_event_timeline(df: pd.DataFrame):
         impact_txt = f" (impact {row['impact']:.2f})" if row["impact"] else ""
         st.write(
             f"• Hiệp {int(row['round'])}, pha {int(row['tick'])} "
-            f"[{row['phase']}] {row['actor']}: {row['description']}{impact_txt}"
+            f"[{row['phase']}] {row['actor_display']}: {row['description']}{impact_txt}"
         )
 
 
@@ -161,7 +184,11 @@ def display_fight_results(entry: HistoryEntry):
     diff = abs(result.score_a - result.score_b)
 
     st.subheader("Tổng kết trận đấu – Thang điểm 0-100")
-    st.write(f"**Trận đấu:** `{entry.class_a_name}` (`{entry.archetype_a_name}`) vs `{entry.class_b_name}` (`{entry.archetype_b_name}`)")
+    st.write(
+        f"**Trận đấu:** `{entry.fighter_a_display}` "
+        f"({entry.class_a_name} • {entry.archetype_a_name}) vs "
+        f"`{entry.fighter_b_display}` ({entry.class_b_name} • {entry.archetype_b_name})"
+    )
     st.write(f"**Điểm số:** `{result.score_a}` – `{result.score_b}` *(chênh {diff})*")
     st.caption("Điểm = Kỹ năng ngày đấu + phong độ trận đấu (thang 0-100+).")
 
@@ -191,13 +218,15 @@ def display_fight_results(entry: HistoryEntry):
             round_rows.append(
                 {
                     "Hiệp": summary.round_number,
-                    "A": summary.score_a,
-                    "B": summary.score_b,
+                    entry.fighter_a_display: summary.score_a,
+                    entry.fighter_b_display: summary.score_b,
                     "Ghi chú": summary.note,
                 }
             )
             textual_summary_lines.append(
-                f"Hiệp {summary.round_number}: A {summary.score_a} – B {summary.score_b}. {summary.note}"
+                f"Hiệp {summary.round_number}: "
+                f"{entry.fighter_a_display} {summary.score_a} – "
+                f"{entry.fighter_b_display} {summary.score_b}. {summary.note}"
             )
 
         st.table(round_rows)
@@ -206,8 +235,8 @@ def display_fight_results(entry: HistoryEntry):
 
         events = [to_tick_event(raw) for summary in result.round_summaries for raw in summary.events]
         events = [event for event in events if event]
-        df = event_dataframe(events)
-        render_event_timeline(df)
+        df = event_dataframe(events, entry.fighter_a_display, entry.fighter_b_display)
+        render_event_timeline(df, entry.fighter_a_display, entry.fighter_b_display)
 
 
 def get_simulation_parameters(selected_class_a: str, selected_class_b: str, selected_archetype_a: str, selected_archetype_b: str):
@@ -224,13 +253,23 @@ def run_fight_simulation(class_a_name: str, class_b_name: str, archetype_a_name:
     return core_run_simulation(fighter_a, fighter_b, num_rounds)
 
 
-def update_history(fight_result: FightResult, class_a_name: str, class_b_name: str, archetype_a_name: str, archetype_b_name: str):
+def update_history(
+    fight_result: FightResult,
+    class_a_name: str,
+    class_b_name: str,
+    archetype_a_name: str,
+    archetype_b_name: str,
+    fighter_a_display: str,
+    fighter_b_display: str,
+):
     history_entry = HistoryEntry(
         fight_result=fight_result,
         class_a_name=class_a_name,
         class_b_name=class_b_name,
         archetype_a_name=archetype_a_name,
         archetype_b_name=archetype_b_name,
+        fighter_a_display=fighter_a_display,
+        fighter_b_display=fighter_b_display,
     )
     st.session_state.fight_history.insert(0, history_entry)
     st.session_state.fight_history = st.session_state.fight_history[:MAX_HISTORY_SIZE]
@@ -265,12 +304,36 @@ def main():
         if selected_archetype_b != "Ngẫu nhiên":
             st.caption(FIGHTER_ARCHETYPES[selected_archetype_b].description)
 
+    name_col1, name_col2 = st.columns(2)
+    with name_col1:
+        fighter_name_a_input = st.text_input(
+            "Tên hiển thị võ sĩ A",
+            value=st.session_state.get("fighter_display_name_a", "Võ sĩ A"),
+            key="fighter_display_name_a",
+        )
+    with name_col2:
+        fighter_name_b_input = st.text_input(
+            "Tên hiển thị võ sĩ B",
+            value=st.session_state.get("fighter_display_name_b", "Võ sĩ B"),
+            key="fighter_display_name_b",
+        )
+
     if st.button("🚀 Mô phỏng trận đấu"):
         class_a_name, class_b_name, archetype_a_name, archetype_b_name = get_simulation_parameters(
             selected_class_a, selected_class_b, selected_archetype_a, selected_archetype_b
         )
         fight_result = run_fight_simulation(class_a_name, class_b_name, archetype_a_name, archetype_b_name, rounds)
-        update_history(fight_result, class_a_name, class_b_name, archetype_a_name, archetype_b_name)
+        display_name_a = fighter_name_a_input.strip() or class_a_name
+        display_name_b = fighter_name_b_input.strip() or class_b_name
+        update_history(
+            fight_result,
+            class_a_name,
+            class_b_name,
+            archetype_a_name,
+            archetype_b_name,
+            display_name_a,
+            display_name_b,
+        )
 
     st.markdown("---")
     st.markdown("## 📜 Lịch sử mô phỏng")

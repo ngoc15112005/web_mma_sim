@@ -115,4 +115,6 @@ class HistoryEntry:
     class_b_name: str
     archetype_a_name: str
     archetype_b_name: str
+    fighter_a_display: str = "Võ sĩ A"
+    fighter_b_display: str = "Võ sĩ B"
     entry_id: str = field(default_factory=lambda: str(uuid.uuid4()))

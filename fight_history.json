@@ -1,1 +1,587 @@
-[]
+[
+    {
+        "fight_result": {
+            "score_a": 83,
+            "score_b": 100,
+            "result_description": "Thắng thuyết phục (100-83) – kiểm soát phần lớn thời lượng",
+            "finish_info": {
+                "archetype_name": "Technical Boxer",
+                "archetype_description": "Bậc thầy về footwork và combo chính xác, thường thắng bằng TKO hoặc điểm số áp đảo.",
+                "description": "TKO – Standing no defense",
+                "method_type": "TKO"
+            },
+            "time_info": {
+                "num_rounds": 3,
+                "round": 3,
+                "minute": 4,
+                "second": 51,
+                "note": "Kết thúc bằng TKO tại hiệp 3, phút 4:51"
+            },
+            "round_summaries": [
+                {
+                    "round_number": 1,
+                    "score_a": 8,
+                    "score_b": 10,
+                    "note": "Võ sĩ B áp đảo hoàn toàn và gây sát thương lớn.",
+                    "events": [
+                        {
+                            "round_number": 1,
+                            "tick_index": 1,
+                            "phase": "ground",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        },
+                        {
+                            "round_number": 1,
+                            "tick_index": 2,
+                            "phase": "standup",
+                            "actor": "B",
+                            "description": "Võ sĩ B áp đảo và gây sát thương nặng.",
+                            "impact": 2.2477693383245323
+                        },
+                        {
+                            "round_number": 1,
+                            "tick_index": 3,
+                            "phase": "clinch",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        },
+                        {
+                            "round_number": 1,
+                            "tick_index": 4,
+                            "phase": "standup",
+                            "actor": "B",
+                            "description": "Võ sĩ B áp đảo và gây sát thương nặng.",
+                            "impact": 1.3785740603327012
+                        },
+                        {
+                            "round_number": 1,
+                            "tick_index": 5,
+                            "phase": "clinch",
+                            "actor": "B",
+                            "description": "Võ sĩ B ghi điểm với đòn phản công chuẩn xác.",
+                            "impact": 0.2648345371805193
+                        },
+                        {
+                            "round_number": 1,
+                            "tick_index": 6,
+                            "phase": "ground",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        }
+                    ]
+                },
+                {
+                    "round_number": 2,
+                    "score_a": 9,
+                    "score_b": 10,
+                    "note": "Võ sĩ B nhỉnh hơn trong các pha tranh chấp.",
+                    "events": [
+                        {
+                            "round_number": 2,
+                            "tick_index": 1,
+                            "phase": "clinch",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        },
+                        {
+                            "round_number": 2,
+                            "tick_index": 2,
+                            "phase": "standup",
+                            "actor": "B",
+                            "description": "Võ sĩ B ghi điểm với đòn phản công chuẩn xác.",
+                            "impact": 0.531168400004313
+                        },
+                        {
+                            "round_number": 2,
+                            "tick_index": 3,
+                            "phase": "standup",
+                            "actor": "B",
+                            "description": "Võ sĩ B ghi điểm với đòn phản công chuẩn xác.",
+                            "impact": 0.4309095407881656
+                        },
+                        {
+                            "round_number": 2,
+                            "tick_index": 4,
+                            "phase": "ground",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        },
+                        {
+                            "round_number": 2,
+                            "tick_index": 5,
+                            "phase": "standup",
+                            "actor": "B",
+                            "description": "Võ sĩ B ghi điểm với đòn phản công chuẩn xác.",
+                            "impact": 0.19555644155221324
+                        },
+                        {
+                            "round_number": 2,
+                            "tick_index": 6,
+                            "phase": "standup",
+                            "actor": "B",
+                            "description": "Võ sĩ B ghi điểm với đòn phản công chuẩn xác.",
+                            "impact": 0.2404277485764192
+                        }
+                    ]
+                },
+                {
+                    "round_number": 3,
+                    "score_a": 8,
+                    "score_b": 10,
+                    "note": "Võ sĩ B áp đảo hoàn toàn và gây sát thương lớn.",
+                    "events": [
+                        {
+                            "round_number": 3,
+                            "tick_index": 1,
+                            "phase": "clinch",
+                            "actor": "B",
+                            "description": "Võ sĩ B ghi điểm với đòn phản công chuẩn xác.",
+                            "impact": 0.36958895823484517
+                        },
+                        {
+                            "round_number": 3,
+                            "tick_index": 2,
+                            "phase": "clinch",
+                            "actor": "B",
+                            "description": "Võ sĩ B ghi điểm với đòn phản công chuẩn xác.",
+                            "impact": 0.1794985958522333
+                        },
+                        {
+                            "round_number": 3,
+                            "tick_index": 3,
+                            "phase": "clinch",
+                            "actor": "B",
+                            "description": "Võ sĩ B ghi điểm với đòn phản công chuẩn xác.",
+                            "impact": 0.4897581408337419
+                        },
+                        {
+                            "round_number": 3,
+                            "tick_index": 4,
+                            "phase": "ground",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        },
+                        {
+                            "round_number": 3,
+                            "tick_index": 5,
+                            "phase": "clinch",
+                            "actor": "B",
+                            "description": "Võ sĩ B áp đảo và gây sát thương nặng.",
+                            "impact": 0.584570214133952
+                        },
+                        {
+                            "round_number": 3,
+                            "tick_index": 6,
+                            "phase": "standup",
+                            "actor": "B",
+                            "description": "Võ sĩ B áp đảo và gây sát thương nặng.",
+                            "impact": 0.5419530284920187
+                        }
+                    ]
+                }
+            ]
+        },
+        "class_a_name": "Kỳ cựu (Veteran)",
+        "class_b_name": "Kỳ cựu (Veteran)",
+        "archetype_a_name": "Volume Striker",
+        "archetype_b_name": "Technical Boxer",
+        "entry_id": "e656d64f-5108-4c31-8a18-daef7bdb64b3"
+    },
+    {
+        "fight_result": {
+            "score_a": 97,
+            "score_b": 100,
+            "result_description": "Thắng sát nút (100-97) – phân định bởi những khoảnh khắc nhỏ",
+            "finish_info": {
+                "archetype_name": "Technical Boxer",
+                "archetype_description": "Bậc thầy về footwork và combo chính xác, thường thắng bằng TKO hoặc điểm số áp đảo.",
+                "description": "Thắng điểm đồng thuận (Unanimous Decision)",
+                "method_type": "DEC"
+            },
+            "time_info": {
+                "num_rounds": 3,
+                "round": 3,
+                "minute": 5,
+                "second": 0,
+                "note": "Kết thúc bằng điểm số sau hiệp cuối cùng"
+            },
+            "round_summaries": [
+                {
+                    "round_number": 1,
+                    "score_a": 9,
+                    "score_b": 10,
+                    "note": "Võ sĩ B nhỉnh hơn trong các pha tranh chấp.",
+                    "events": [
+                        {
+                            "round_number": 1,
+                            "tick_index": 1,
+                            "phase": "ground",
+                            "actor": "A",
+                            "description": "Võ sĩ A ghi điểm với đòn đánh chính xác.",
+                            "impact": 0.3472567923352316
+                        },
+                        {
+                            "round_number": 1,
+                            "tick_index": 2,
+                            "phase": "standup",
+                            "actor": "B",
+                            "description": "Võ sĩ B áp đảo và gây sát thương nặng.",
+                            "impact": 0.5201035255273835
+                        },
+                        {
+                            "round_number": 1,
+                            "tick_index": 3,
+                            "phase": "standup",
+                            "actor": "B",
+                            "description": "Võ sĩ B ghi điểm với đòn phản công chuẩn xác.",
+                            "impact": 0.40721248849733716
+                        },
+                        {
+                            "round_number": 1,
+                            "tick_index": 4,
+                            "phase": "ground",
+                            "actor": "A",
+                            "description": "Võ sĩ A tung chuỗi đòn uy lực khiến đối thủ lảo đảo.",
+                            "impact": 0.41200657651920913
+                        },
+                        {
+                            "round_number": 1,
+                            "tick_index": 5,
+                            "phase": "standup",
+                            "actor": "B",
+                            "description": "Võ sĩ B áp đảo và gây sát thương nặng.",
+                            "impact": 0.9084290791279196
+                        },
+                        {
+                            "round_number": 1,
+                            "tick_index": 6,
+                            "phase": "clinch",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        }
+                    ]
+                },
+                {
+                    "round_number": 2,
+                    "score_a": 10,
+                    "score_b": 10,
+                    "note": "Hiệp đấu cân bằng, hai bên trả đòn qua lại.",
+                    "events": [
+                        {
+                            "round_number": 2,
+                            "tick_index": 1,
+                            "phase": "standup",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        },
+                        {
+                            "round_number": 2,
+                            "tick_index": 2,
+                            "phase": "ground",
+                            "actor": "A",
+                            "description": "Võ sĩ A ghi điểm với đòn đánh chính xác.",
+                            "impact": 0.14443250094281465
+                        },
+                        {
+                            "round_number": 2,
+                            "tick_index": 3,
+                            "phase": "standup",
+                            "actor": "B",
+                            "description": "Võ sĩ B ghi điểm với đòn phản công chuẩn xác.",
+                            "impact": 0.28050958339718834
+                        },
+                        {
+                            "round_number": 2,
+                            "tick_index": 4,
+                            "phase": "clinch",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        },
+                        {
+                            "round_number": 2,
+                            "tick_index": 5,
+                            "phase": "standup",
+                            "actor": "B",
+                            "description": "Võ sĩ B ghi điểm với đòn phản công chuẩn xác.",
+                            "impact": 0.42050918642861673
+                        },
+                        {
+                            "round_number": 2,
+                            "tick_index": 6,
+                            "phase": "ground",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        }
+                    ]
+                },
+                {
+                    "round_number": 3,
+                    "score_a": 10,
+                    "score_b": 10,
+                    "note": "Hiệp đấu cân bằng, hai bên trả đòn qua lại.",
+                    "events": [
+                        {
+                            "round_number": 3,
+                            "tick_index": 1,
+                            "phase": "standup",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        },
+                        {
+                            "round_number": 3,
+                            "tick_index": 2,
+                            "phase": "standup",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        },
+                        {
+                            "round_number": 3,
+                            "tick_index": 3,
+                            "phase": "ground",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        },
+                        {
+                            "round_number": 3,
+                            "tick_index": 4,
+                            "phase": "ground",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        },
+                        {
+                            "round_number": 3,
+                            "tick_index": 5,
+                            "phase": "ground",
+                            "actor": "A",
+                            "description": "Võ sĩ A ghi điểm với đòn đánh chính xác.",
+                            "impact": 0.36502906939758056
+                        },
+                        {
+                            "round_number": 3,
+                            "tick_index": 6,
+                            "phase": "standup",
+                            "actor": "B",
+                            "description": "Võ sĩ B áp đảo và gây sát thương nặng.",
+                            "impact": 0.5808830061362167
+                        }
+                    ]
+                }
+            ]
+        },
+        "class_a_name": "Kỳ cựu (Veteran)",
+        "class_b_name": "Kỳ cựu (Veteran)",
+        "archetype_a_name": "Volume Striker",
+        "archetype_b_name": "Technical Boxer",
+        "entry_id": "2c993cab-90e5-43ca-87b1-2aed8ef58fce"
+    },
+    {
+        "fight_result": {
+            "score_a": 97,
+            "score_b": 97,
+            "result_description": "Hòa mãn nhãn (97-97) sau một màn đôi công dữ dội!",
+            "finish_info": {
+                "archetype_name": "Không có",
+                "archetype_description": "Trận đấu kết thúc với tỉ số hòa.",
+                "description": "Hòa điểm đồng thuận (Draw)",
+                "method_type": "DRAW"
+            },
+            "time_info": {
+                "num_rounds": 3,
+                "round": 3,
+                "minute": 5,
+                "second": 0,
+                "note": "Kết thúc bằng điểm số sau hiệp cuối cùng"
+            },
+            "round_summaries": [
+                {
+                    "round_number": 1,
+                    "score_a": 10,
+                    "score_b": 9,
+                    "note": "Võ sĩ A nhỉnh hơn trong các pha tranh chấp.",
+                    "events": [
+                        {
+                            "round_number": 1,
+                            "tick_index": 1,
+                            "phase": "standup",
+                            "actor": "A",
+                            "description": "Võ sĩ A ghi điểm với đòn đánh chính xác.",
+                            "impact": 0.23682958162228873
+                        },
+                        {
+                            "round_number": 1,
+                            "tick_index": 2,
+                            "phase": "standup",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        },
+                        {
+                            "round_number": 1,
+                            "tick_index": 3,
+                            "phase": "standup",
+                            "actor": "A",
+                            "description": "Võ sĩ A ghi điểm với đòn đánh chính xác.",
+                            "impact": 0.20188808722413557
+                        },
+                        {
+                            "round_number": 1,
+                            "tick_index": 4,
+                            "phase": "clinch",
+                            "actor": "A",
+                            "description": "Võ sĩ A ghi điểm với đòn đánh chính xác.",
+                            "impact": 0.16973085029045037
+                        },
+                        {
+                            "round_number": 1,
+                            "tick_index": 5,
+                            "phase": "ground",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        },
+                        {
+                            "round_number": 1,
+                            "tick_index": 6,
+                            "phase": "ground",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        }
+                    ]
+                },
+                {
+                    "round_number": 2,
+                    "score_a": 10,
+                    "score_b": 10,
+                    "note": "Hiệp đấu cân bằng, hai bên trả đòn qua lại.",
+                    "events": [
+                        {
+                            "round_number": 2,
+                            "tick_index": 1,
+                            "phase": "standup",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        },
+                        {
+                            "round_number": 2,
+                            "tick_index": 2,
+                            "phase": "standup",
+                            "actor": "A",
+                            "description": "Võ sĩ A ghi điểm với đòn đánh chính xác.",
+                            "impact": 0.1682627354537198
+                        },
+                        {
+                            "round_number": 2,
+                            "tick_index": 3,
+                            "phase": "ground",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        },
+                        {
+                            "round_number": 2,
+                            "tick_index": 4,
+                            "phase": "clinch",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        },
+                        {
+                            "round_number": 2,
+                            "tick_index": 5,
+                            "phase": "ground",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        },
+                        {
+                            "round_number": 2,
+                            "tick_index": 6,
+                            "phase": "clinch",
+                            "actor": "B",
+                            "description": "Võ sĩ B ghi điểm với đòn phản công chuẩn xác.",
+                            "impact": 0.20666394153727327
+                        }
+                    ]
+                },
+                {
+                    "round_number": 3,
+                    "score_a": 9,
+                    "score_b": 10,
+                    "note": "Võ sĩ B nhỉnh hơn trong các pha tranh chấp.",
+                    "events": [
+                        {
+                            "round_number": 3,
+                            "tick_index": 1,
+                            "phase": "ground",
+                            "actor": "B",
+                            "description": "Võ sĩ B ghi điểm với đòn phản công chuẩn xác.",
+                            "impact": 0.17937429598448698
+                        },
+                        {
+                            "round_number": 3,
+                            "tick_index": 2,
+                            "phase": "clinch",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        },
+                        {
+                            "round_number": 3,
+                            "tick_index": 3,
+                            "phase": "ground",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        },
+                        {
+                            "round_number": 3,
+                            "tick_index": 4,
+                            "phase": "standup",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        },
+                        {
+                            "round_number": 3,
+                            "tick_index": 5,
+                            "phase": "clinch",
+                            "actor": null,
+                            "description": "Hai bên giằng co, chưa bên nào tạo được lợi thế rõ rệt.",
+                            "impact": 0.0
+                        },
+                        {
+                            "round_number": 3,
+                            "tick_index": 6,
+                            "phase": "ground",
+                            "actor": "B",
+                            "description": "Võ sĩ B ghi điểm với đòn phản công chuẩn xác.",
+                            "impact": 0.22420511131856571
+                        }
+                    ]
+                }
+            ]
+        },
+        "class_a_name": "Kỳ cựu (Veteran)",
+        "class_b_name": "Kỳ cựu (Veteran)",
+        "archetype_a_name": "Volume Striker",
+        "archetype_b_name": "Technical Boxer",
+        "entry_id": "f2823b0e-bc5f-4571-b3e0-9f66dfc22054"
+    }
+]

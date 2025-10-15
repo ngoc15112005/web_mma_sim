@@ -6,6 +6,81 @@ Tập trung tất cả các hằng số, trọng số và các giá trị cấu 
 # --- Cấu hình Logic Trận đấu (fight_logic.py) ---
 PERFORMANCE_FACTOR_RANGE = (-25, 35) # (min, max) của yếu tố phong độ
 
+# --- Thuộc tính chi tiết cho mô phỏng nâng cao ---
+ATTRIBUTE_BASELINES = {
+    "Tân binh (Rookie)": {
+        "striking": 45,
+        "clinch": 42,
+        "grappling": 40,
+        "submission": 38,
+        "cardio": 48,
+        "durability": 46,
+        "fight_iq": 42,
+    },
+    "Kỳ cựu (Veteran)": {
+        "striking": 55,
+        "clinch": 54,
+        "grappling": 53,
+        "submission": 50,
+        "cardio": 58,
+        "durability": 58,
+        "fight_iq": 55,
+    },
+    "Ngôi sao (Contender)": {
+        "striking": 66,
+        "clinch": 62,
+        "grappling": 64,
+        "submission": 60,
+        "cardio": 68,
+        "durability": 68,
+        "fight_iq": 66,
+    },
+    "Nhà vô địch (Champion)": {
+        "striking": 76,
+        "clinch": 72,
+        "grappling": 75,
+        "submission": 72,
+        "cardio": 80,
+        "durability": 82,
+        "fight_iq": 78,
+    },
+    "Huyền thoại (Legend)": {
+        "striking": 82,
+        "clinch": 78,
+        "grappling": 80,
+        "submission": 78,
+        "cardio": 86,
+        "durability": 88,
+        "fight_iq": 84,
+    },
+}
+
+ATTRIBUTE_ARCHETYPE_MODIFIERS = {
+    "Power Puncher / Brawler": {"striking": 10, "durability": 6, "cardio": -5, "fight_iq": -2},
+    "Technical Boxer": {"striking": 8, "fight_iq": 4, "grappling": -2},
+    "Kickboxer / Muay Thai Specialist": {"striking": 7, "clinch": 5, "grappling": -3},
+    "Counter Striker": {"striking": 9, "fight_iq": 6, "durability": -2},
+    "Volume Striker": {"striking": 4, "cardio": 8, "durability": -1},
+    "Movement-Based Striker / Point Fighter": {"striking": 5, "fight_iq": 5, "durability": -4},
+    "Unorthodox Striker": {"striking": 9, "fight_iq": 3, "cardio": -3},
+    "BJJ Specialist": {"grappling": 6, "submission": 12, "striking": -6},
+    "Dagestani Mauler": {"clinch": 6, "grappling": 8, "cardio": 5, "striking": -4},
+    "Wrestler": {"clinch": 8, "grappling": 7, "submission": -3},
+    "Sambo Specialist": {"clinch": 5, "grappling": 6, "submission": 6},
+    "Submission Wrestler (Catch Wrestler)": {"grappling": 7, "submission": 9, "striking": -4},
+    "Balanced Finisher / MMA Generalist": {"striking": 2, "grappling": 2, "cardio": 2},
+    "Wrestle-Boxer": {"striking": 4, "clinch": 5, "grappling": 4},
+    "Pressure Fighter": {"clinch": 4, "cardio": 6, "durability": 3},
+    "Clinch Fighter / Dirty Boxer": {"clinch": 8, "striking": 2, "cardio": -2},
+    "One-Round Monster": {"striking": 10, "cardio": -10, "durability": 2},
+    "Durable Grinder": {"cardio": 9, "durability": 10, "striking": -4},
+    "Glass Cannon": {"striking": 12, "durability": -12},
+}
+
+ATTRIBUTE_NOISE_RANGE = (-4, 4)
+ATTRIBUTE_MIN = 30
+ATTRIBUTE_MAX = 99
+
 # --- Cấu hình Phương thức Kết liễu (finish_method.py) ---
 FINISH_METHODS = {
     "KO": [

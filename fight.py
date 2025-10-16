@@ -48,11 +48,21 @@ class Fight:
             winner = self.fighter_a if score_a > score_b else self.fighter_b
             winner_archetype_name = winner.archetype.name
             finish = get_dynamic_finish_method(winner_archetype_name, score_diff)
-            time_info = generate_dynamic_fight_time(
-                finish.method_type,
-                self.num_rounds,
-                winner_archetype_name,
-                score_diff,
+            if finish.method_type in {"KO", "TKO", "SUB"}:
+                method_type = "DEC"
+                description = random.choice(config.FINISH_METHODS["DEC"])
+                finish = FinishInfo(
+                    archetype_name=finish.archetype_name,
+                    archetype_description=finish.archetype_description,
+                    description=description,
+                    method_type=method_type,
+                )
+            time_info = TimeInfo(
+                num_rounds=self.num_rounds,
+                round=self.num_rounds,
+                minute=5,
+                second=0,
+                note="Kết thúc bằng quyết định của giám khảo sau đủ số hiệp.",
             )
 
         self.result = FightResult(

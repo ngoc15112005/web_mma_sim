@@ -91,9 +91,11 @@ class Fight:
                     modifier = value
                     break
 
+        base_values = baseline.copy()
+        modifier_scale = getattr(config, "ATTRIBUTE_MODIFIER_SCALE", 1.0)
         for stat, delta in modifier.items():
             if stat in baseline:
-                baseline[stat] += delta
+                baseline[stat] += delta * modifier_scale
 
         for stat in baseline:
             baseline[stat] += random.randint(*config.ATTRIBUTE_NOISE_RANGE)
@@ -101,6 +103,26 @@ class Fight:
                 config.ATTRIBUTE_MIN,
                 min(config.ATTRIBUTE_MAX, baseline[stat]),
             )
+
+        delta_clamp = getattr(config, "ATTRIBUTE_DELTA_CLAMP", None)
+        if delta_clamp is not None:
+            for stat in baseline:
+                delta = baseline[stat] - base_values[stat]
+                if delta > delta_clamp:
+                    baseline[stat] = base_values[stat] + delta_clamp
+                elif delta < -delta_clamp:
+                    baseline[stat] = base_values[stat] - delta_clamp
+
+        blend_weight = getattr(config, "ATTRIBUTE_BASELINE_BLEND", 0.0)
+        if blend_weight:
+            for stat in baseline:
+                baseline[stat] = (
+                    base_values[stat] * blend_weight
+                    + baseline[stat] * (1 - blend_weight)
+                )
+
+        for stat in baseline:
+            baseline[stat] = int(round(baseline[stat]))
 
         return FighterAttributes(**baseline)
 

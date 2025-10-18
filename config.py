@@ -77,9 +77,12 @@ ATTRIBUTE_ARCHETYPE_MODIFIERS = {
     "Glass Cannon": {"striking": 12, "durability": -12},
 }
 
-ATTRIBUTE_NOISE_RANGE = (-4, 4)
+ATTRIBUTE_NOISE_RANGE = (-12, 12)
 ATTRIBUTE_MIN = 30
 ATTRIBUTE_MAX = 99
+ATTRIBUTE_MODIFIER_SCALE = 0.01
+ATTRIBUTE_BASELINE_BLEND = 0.9
+ATTRIBUTE_DELTA_CLAMP = 0
 
 # --- Cấu hình Phương thức Kết liễu (finish_method.py) ---
 FINISH_METHODS = {

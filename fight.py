@@ -5,6 +5,10 @@ from battle_result import analyze_battle_result_expanded
 from finish_method import get_dynamic_finish_method
 from fight_time import generate_dynamic_fight_time
 import config
+
+ROUND_DURATION_SECONDS = 5 * 60
+TICKS_PER_ROUND = 6
+
 from models import (
     Fighter,
     FightResult,
@@ -146,6 +150,44 @@ class Fight:
         if min_scale:
             scale = max(min_scale, scale)
         return max(0.0, scale)
+
+    def _calc_finish_clock(self, tick_index: int, *, near_end: bool = False) -> tuple[int, int]:
+        tick_index = max(1, min(TICKS_PER_ROUND, tick_index))
+        tick_duration = ROUND_DURATION_SECONDS / TICKS_PER_ROUND
+        if near_end:
+            seconds_into_round = int(min(ROUND_DURATION_SECONDS - 1, tick_index * tick_duration - 1))
+        else:
+            start = int((tick_index - 1) * tick_duration)
+            end = int(min(ROUND_DURATION_SECONDS, tick_index * tick_duration))
+            if end <= start:
+                seconds_into_round = start
+            else:
+                seconds_into_round = random.randint(start, end - 1)
+        minute = seconds_into_round // 60
+        second = seconds_into_round % 60
+        return minute, second
+
+    def _make_time_info(
+        self,
+        round_number: int,
+        tick_index: int,
+        *,
+        near_end: bool = False,
+        note_template: Optional[str] = None,
+    ) -> TimeInfo:
+        minute, second = self._calc_finish_clock(tick_index, near_end=near_end)
+        second_str = str(second).zfill(2)
+        if note_template:
+            note = note_template.format(round=round_number, minute=minute, second=second_str)
+        else:
+            note = f"Kết thúc ở hiệp {round_number}, phút {minute}:{second_str}."
+        return TimeInfo(
+            num_rounds=self.num_rounds,
+            round=round_number,
+            minute=minute,
+            second=second,
+            note=note,
+        )
 
     def _pick_dominance_finish_hint(self, winner: Fighter, last_phase: Optional[str]) -> str:
         """Select a finish hint for dominance-based stoppages."""
@@ -309,7 +351,7 @@ class Fight:
         resilience_a = self._resilience_rating(attrs_a)
         resilience_b = self._resilience_rating(attrs_b)
 
-        tick_count = 6
+        tick_count = TICKS_PER_ROUND
         tick_points_a = 0
         tick_points_b = 0
         control_a = 0.0
@@ -326,9 +368,11 @@ class Fight:
         finish_hint: Optional[str] = None
         tick_events: list[TickEvent] = []
         last_phase: Optional[str] = None
+        last_tick_index = 0
         dominance_finish_note: Optional[str] = None
 
         for tick_index in range(1, tick_count + 1):
+            last_tick_index = tick_index
             phase = self._choose_phase(attrs_a, attrs_b, last_phase)
             tick_result = self._simulate_tick(
                 round_number=round_number,
@@ -364,15 +408,7 @@ class Fight:
                 winner_side = tick_result["winner"]
                 finish_hint = tick_result["finish_hint"]
                 finish_bonus_points = 4
-                minute = min(4, (tick_index - 1) // 2)
-                second = random.randint(0, 59)
-                finish_time = TimeInfo(
-                    num_rounds=self.num_rounds,
-                    round=round_number,
-                    minute=minute,
-                    second=second,
-                    note=f"Kết thúc ở hiệp {round_number}, phút {minute}:{str(second).zfill(2)}.",
-                )
+                finish_time = self._make_time_info(round_number, tick_index)
                 break
 
             last_phase = phase
@@ -408,12 +444,11 @@ class Fight:
                             finish_bonus_points = 4
                             dominance_finish_note = " Trận đấu bị dừng do áp đảo rõ rệt."
                             if finish_time is None:
-                                finish_time = TimeInfo(
-                                    num_rounds=self.num_rounds,
-                                    round=round_number,
-                                    minute=4,
-                                    second=59,
-                                    note=f"Kết thúc áp đảo ở hiệp {round_number}, trọng tài dừng trận sau tiếng chuông.",
+                                reference_tick = last_tick_index or tick_count
+                                finish_time = self._make_time_info(
+                                    round_number,
+                                    reference_tick,
+                                    note_template="Kết thúc áp đảo ở hiệp {round}, trọng tài dừng trận lúc {minute}:{second}.",
                                 )
 
         if dominance >= 6:
@@ -483,12 +518,11 @@ class Fight:
                 )
             round_summary.note += " Kết liễu trận đấu ngay hiệp này."
             if finish_time is None:
-                finish_time = TimeInfo(
-                    num_rounds=self.num_rounds,
-                    round=round_number,
-                    minute=4,
-                    second=59,
-                    note=f"Kết thúc ở hiệp {round_number}, sau tiếng chuông.",
+                reference_tick = last_tick_index or tick_count
+                finish_time = self._make_time_info(
+                    round_number,
+                    reference_tick,
+                    note_template="Kết thúc ở hiệp {round}, sau tiếng chuông.",
                 )
 
         return {

@@ -26,6 +26,20 @@ class Fight:
         self.result: Optional[FightResult] = None
         self.attributes_a = self._build_attributes(self.fighter_a)
         self.attributes_b = self._build_attributes(self.fighter_b)
+        self.class_skill_a = self.fighter_a.generate_skill_point()
+        self.class_skill_b = self.fighter_b.generate_skill_point()
+        perf_min, perf_max = config.PERFORMANCE_FACTOR_RANGE
+        self.performance_a = random.randint(perf_min, perf_max)
+        self.performance_b = random.randint(perf_min, perf_max)
+        total_ticks = max(1, self.num_rounds * 6)
+        skill_weight = getattr(config, "CLASS_SKILL_ADVANTAGE_WEIGHT", 0.0)
+        performance_weight = getattr(config, "PERFORMANCE_ADVANTAGE_WEIGHT", 0.0)
+        self._class_skill_bonus = (
+            (self.class_skill_a - self.class_skill_b) * skill_weight / total_ticks
+        )
+        self._performance_bonus = (
+            (self.performance_a - self.performance_b) * performance_weight / total_ticks
+        )
 
     def simulate(self):
         round_summaries, score_a, score_b, forced_finish, forced_time = self._simulate_rounds()
@@ -431,6 +445,7 @@ class Fight:
 
         noise = random.uniform(-5, 5)
         advantage = (attack_a - defense_b) - (attack_b - defense_a) + noise
+        advantage += self._class_skill_bonus + self._performance_bonus
 
         if advantage >= 8:
             points_a += 2

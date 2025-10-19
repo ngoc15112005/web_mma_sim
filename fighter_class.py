@@ -6,27 +6,27 @@ from models import FighterClass
 _ALL_FIGHTER_CLASSES: List[FighterClass] = [
     FighterClass(
         name="Tân binh (Rookie)",
-        skill_range=(5, 40),
+        skill_range=(25, 55),
         description="Võ sĩ mới vào nghề, còn non kinh nghiệm nhưng đầy tiềm năng."
     ),
     FighterClass(
         name="Kỳ cựu (Veteran)",
-        skill_range=(25, 55),
+        skill_range=(40, 70),
         description="Võ sĩ dày dạn kinh nghiệm, thi đấu ổn định và khó bị bắt bài."
     ),
     FighterClass(
         name="Ngôi sao (Contender)",
-        skill_range=(45, 70),
+        skill_range=(55, 85),
         description="Võ sĩ thuộc top đầu, có khả năng tranh đai vô địch."
     ),
     FighterClass(
         name="Nhà vô địch (Champion)",
-        skill_range=(55, 85),
+        skill_range=(70, 95),
         description="Đỉnh cao của giới đấu, sở hữu kỹ năng và bản lĩnh vượt trội."
     ),
     FighterClass(
         name="Huyền thoại (Legend)",
-        skill_range=(55, 95),
+        skill_range=(80, 100),
         description="Một biểu tượng của môn thể thao, đã chứng tỏ đẳng cấp qua nhiều thế hệ."
     )
 ]

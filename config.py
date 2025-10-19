@@ -5,53 +5,55 @@ Tập trung tất cả các hằng số, trọng số và các giá trị cấu 
 
 # --- Cấu hình Logic Trận đấu (fight_logic.py) ---
 PERFORMANCE_FACTOR_RANGE = (-25, 35) # (min, max) của yếu tố phong độ
+CLASS_SKILL_ADVANTAGE_WEIGHT = 3.25
+PERFORMANCE_ADVANTAGE_WEIGHT = 0.05
 
 # --- Thuộc tính chi tiết cho mô phỏng nâng cao ---
 ATTRIBUTE_BASELINES = {
     "Tân binh (Rookie)": {
-        "striking": 45,
-        "clinch": 42,
-        "grappling": 40,
-        "submission": 38,
-        "cardio": 48,
-        "durability": 46,
-        "fight_iq": 42,
+        "striking": 65,
+        "clinch": 63,
+        "grappling": 63,
+        "submission": 61,
+        "cardio": 68,
+        "durability": 67,
+        "fight_iq": 64,
     },
     "Kỳ cựu (Veteran)": {
-        "striking": 55,
-        "clinch": 54,
-        "grappling": 53,
-        "submission": 50,
-        "cardio": 58,
-        "durability": 58,
-        "fight_iq": 55,
+        "striking": 65,
+        "clinch": 63,
+        "grappling": 63,
+        "submission": 61,
+        "cardio": 68,
+        "durability": 67,
+        "fight_iq": 64,
     },
     "Ngôi sao (Contender)": {
-        "striking": 66,
-        "clinch": 62,
-        "grappling": 64,
-        "submission": 60,
+        "striking": 65,
+        "clinch": 63,
+        "grappling": 63,
+        "submission": 61,
         "cardio": 68,
-        "durability": 68,
-        "fight_iq": 66,
+        "durability": 67,
+        "fight_iq": 64,
     },
     "Nhà vô địch (Champion)": {
-        "striking": 76,
-        "clinch": 72,
-        "grappling": 75,
-        "submission": 72,
-        "cardio": 80,
-        "durability": 82,
-        "fight_iq": 78,
+        "striking": 65,
+        "clinch": 63,
+        "grappling": 63,
+        "submission": 61,
+        "cardio": 68,
+        "durability": 67,
+        "fight_iq": 64,
     },
     "Huyền thoại (Legend)": {
-        "striking": 82,
-        "clinch": 78,
-        "grappling": 80,
-        "submission": 78,
-        "cardio": 86,
-        "durability": 88,
-        "fight_iq": 84,
+        "striking": 65,
+        "clinch": 63,
+        "grappling": 63,
+        "submission": 61,
+        "cardio": 68,
+        "durability": 67,
+        "fight_iq": 64,
     },
 }
 
@@ -77,12 +79,12 @@ ATTRIBUTE_ARCHETYPE_MODIFIERS = {
     "Glass Cannon": {"striking": 12, "durability": -12},
 }
 
-ATTRIBUTE_NOISE_RANGE = (-12, 12)
+ATTRIBUTE_NOISE_RANGE = (-10, 10)
 ATTRIBUTE_MIN = 30
 ATTRIBUTE_MAX = 99
 ATTRIBUTE_MODIFIER_SCALE = 0.01
-ATTRIBUTE_BASELINE_BLEND = 0.9
-ATTRIBUTE_DELTA_CLAMP = 0
+ATTRIBUTE_BASELINE_BLEND = 0.4
+ATTRIBUTE_DELTA_CLAMP = 8
 
 # --- Cấu hình Phương thức Kết liễu (finish_method.py) ---
 FINISH_METHODS = {

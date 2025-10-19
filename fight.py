@@ -44,33 +44,48 @@ class Fight:
     def simulate(self):
         round_summaries, score_a, score_b, forced_finish, forced_time = self._simulate_rounds()
 
-        result_description = analyze_battle_result_expanded(score_a, score_b)
         score_diff = abs(score_a - score_b)
 
         if forced_finish:
             finish = forced_finish
             time_info = forced_time
         elif score_a == score_b:
-            finish = FinishInfo(
-                archetype_name="Không có",
-                archetype_description="Trận đấu kết thúc với tỉ số hòa.",
-                description=random.choice(config.FINISH_METHODS["DRAW"]),
-                method_type="DRAW",
-            )
-            time_info = generate_dynamic_fight_time("DRAW", self.num_rounds)
+            if getattr(config, "ALLOW_TIE_BREAK_DECISION", False):
+                bias_scale = getattr(config, "TIE_BREAK_DECISION_BIAS", 0.0)
+                score_delta = getattr(config, "TIE_BREAK_DECISION_SCORE_DELTA", 1)
+                advantage = (self.class_skill_a - self.class_skill_b) + (self.performance_a - self.performance_b)
+                prob_a = 0.5 + advantage * bias_scale
+                prob_a = max(0.05, min(0.95, prob_a))
+                winner_side = "A" if random.random() < prob_a else "B"
+                if winner_side == "A":
+                    score_a = min(100, score_a + score_delta)
+                    winner = self.fighter_a
+                else:
+                    score_b = min(100, score_b + score_delta)
+                    winner = self.fighter_b
+                score_diff = abs(score_a - score_b)
+                finish = get_dynamic_finish_method(winner.archetype.name, max(1, score_diff))
+                finish = self._normalize_scorecard_finish(finish, score_diff, winner)
+                time_info = TimeInfo(
+                    num_rounds=self.num_rounds,
+                    round=self.num_rounds,
+                    minute=5,
+                    second=0,
+                    note="Giám khảo ra quyết định tách sau khi điểm số bằng nhau.",
+                )
+            else:
+                finish = FinishInfo(
+                    archetype_name="Không có",
+                    archetype_description="Trận đấu kết thúc với tỉ số hòa.",
+                    description=random.choice(config.FINISH_METHODS["DRAW"]),
+                    method_type="DRAW",
+                )
+                time_info = generate_dynamic_fight_time("DRAW", self.num_rounds)
         else:
             winner = self.fighter_a if score_a > score_b else self.fighter_b
             winner_archetype_name = winner.archetype.name
             finish = get_dynamic_finish_method(winner_archetype_name, score_diff)
-            if finish.method_type in {"KO", "TKO", "SUB"}:
-                method_type = "DEC"
-                description = random.choice(config.FINISH_METHODS["DEC"])
-                finish = FinishInfo(
-                    archetype_name=finish.archetype_name,
-                    archetype_description=finish.archetype_description,
-                    description=description,
-                    method_type=method_type,
-                )
+            finish = self._normalize_scorecard_finish(finish, score_diff, winner)
             time_info = TimeInfo(
                 num_rounds=self.num_rounds,
                 round=self.num_rounds,
@@ -78,6 +93,8 @@ class Fight:
                 second=0,
                 note="Kết thúc bằng quyết định của giám khảo sau đủ số hiệp.",
             )
+
+        result_description = analyze_battle_result_expanded(score_a, score_b)
 
         self.result = FightResult(
             score_a=score_a,
@@ -87,6 +104,70 @@ class Fight:
             time_info=time_info,
             round_summaries=round_summaries,
         )
+
+    def _normalize_scorecard_finish(self, finish: FinishInfo, score_diff: int, winner: Fighter) -> FinishInfo:
+        """Ensure scorecard-based outcomes map to reasonable finish types."""
+        allowed_types = {"KO", "TKO", "SUB"}
+        if finish.method_type not in allowed_types:
+            return finish
+
+        allow_stoppage = getattr(config, "ALLOW_SCORECARD_STOPPAGES", False)
+        diff_threshold = getattr(config, "SCORECARD_STOPPAGE_DIFF_THRESHOLD", None)
+        if allow_stoppage and diff_threshold is not None and score_diff >= diff_threshold:
+            return finish
+
+        base_prob = getattr(config, "SCORECARD_STOPPAGE_BASE_PROB", 0.0)
+        per_point = getattr(config, "SCORECARD_STOPPAGE_PER_POINT", 0.0)
+        if allow_stoppage and (base_prob > 0.0 or per_point > 0.0):
+            probability = base_prob + max(0.0, score_diff) * per_point
+            probability *= self._finish_probability_scale(winner.archetype)
+            probability = max(0.0, min(1.0, probability))
+            if random.random() < probability:
+                return finish
+
+        description = random.choice(config.FINISH_METHODS["DEC"])
+        return FinishInfo(
+            archetype_name=finish.archetype_name,
+            archetype_description=finish.archetype_description,
+            description=description,
+            method_type="DEC",
+        )
+
+    def _finish_probability_scale(self, archetype) -> float:
+        weights = getattr(archetype, "weights", {}) or {}
+        total = sum(weights.values()) or 1.0
+        decision_share = weights.get("DEC", 0) / total
+        influence = getattr(config, "FINISH_DECISION_WEIGHT_INFLUENCE", 0.0)
+        min_scale = getattr(config, "FINISH_MIN_PROB_SCALE", 0.0)
+        max_scale = getattr(config, "FINISH_MAX_PROB_SCALE", None)
+        scale = 1.0 + decision_share * influence
+        if max_scale is not None:
+            scale = min(max_scale, scale)
+        if min_scale:
+            scale = max(min_scale, scale)
+        return max(0.0, scale)
+
+    def _pick_dominance_finish_hint(self, winner: Fighter, last_phase: Optional[str]) -> str:
+        """Select a finish hint for dominance-based stoppages."""
+        weights = getattr(winner.archetype, "weights", {}) or {}
+        method_weights = {
+            "KO": weights.get("KO", 0),
+            "TKO": weights.get("TKO", 0),
+            "SUB": weights.get("SUB", 0),
+        }
+
+        if last_phase == "ground" and method_weights.get("SUB", 0) > 0:
+            return "SUB"
+        if last_phase == "standup":
+            if method_weights.get("KO", 0) >= method_weights.get("TKO", 0):
+                return "KO"
+            if method_weights.get("TKO", 0) > 0:
+                return "TKO"
+        if last_phase == "clinch" and method_weights.get("TKO", 0) > 0:
+            return "TKO"
+
+        preferred = max(method_weights, key=lambda key: method_weights[key], default="TKO")
+        return preferred if method_weights.get(preferred, 0) else "TKO"
 
     # ------------------------------------------------------------------
     # Thuộc tính & tiện ích
@@ -245,6 +326,7 @@ class Fight:
         finish_hint: Optional[str] = None
         tick_events: list[TickEvent] = []
         last_phase: Optional[str] = None
+        dominance_finish_note: Optional[str] = None
 
         for tick_index in range(1, tick_count + 1):
             phase = self._choose_phase(attrs_a, attrs_b, last_phase)
@@ -297,6 +379,43 @@ class Fight:
 
         dominance = tick_points_a - tick_points_b + (control_a - control_b) * 0.6
 
+        if not finish_trigger:
+            dominance_threshold = getattr(config, "DOMINANCE_FINISH_THRESHOLD", None)
+            if dominance_threshold:
+                dominance_margin = abs(dominance)
+                if dominance_margin >= dominance_threshold:
+                    base_prob = getattr(config, "DOMINANCE_FINISH_BASE_PROB", 0.0)
+                    per_point_prob = getattr(config, "DOMINANCE_FINISH_PER_POINT", 0.0)
+                    max_prob = getattr(config, "DOMINANCE_FINISH_MAX_PROB", 1.0)
+                    finish_prob = base_prob + max(0.0, dominance_margin - dominance_threshold) * per_point_prob
+
+                    if finish_prob > 0.0:
+                        candidate_side = "A" if dominance > 0 else "B"
+                        candidate_fighter = self.fighter_a if candidate_side == "A" else self.fighter_b
+                        if last_phase == "ground":
+                            sub_bonus = getattr(config, "DOMINANCE_SUB_FINISH_BONUS", 0.0)
+                            if sub_bonus:
+                                submission_weight = candidate_fighter.archetype.weights.get("SUB", 0)
+                                finish_prob += sub_bonus * max(0, submission_weight) / 100.0
+
+                        finish_prob *= self._finish_probability_scale(candidate_fighter.archetype)
+                        finish_prob = min(max_prob, max(0.0, finish_prob))
+
+                        if random.random() < finish_prob:
+                            finish_trigger = True
+                            winner_side = candidate_side
+                            finish_hint = self._pick_dominance_finish_hint(candidate_fighter, last_phase)
+                            finish_bonus_points = 4
+                            dominance_finish_note = " Trận đấu bị dừng do áp đảo rõ rệt."
+                            if finish_time is None:
+                                finish_time = TimeInfo(
+                                    num_rounds=self.num_rounds,
+                                    round=round_number,
+                                    minute=4,
+                                    second=59,
+                                    note=f"Kết thúc áp đảo ở hiệp {round_number}, trọng tài dừng trận sau tiếng chuông.",
+                                )
+
         if dominance >= 6:
             points_a, points_b = 10, 8
             winner_side = winner_side or "A"
@@ -316,6 +435,9 @@ class Fight:
         else:
             points_a, points_b = 10, 10
             note = "Hiệp đấu cân bằng, hai bên trả đòn qua lại."
+
+        if dominance_finish_note:
+            note += dominance_finish_note
 
         round_summary = RoundSummary(
             round_number=round_number,

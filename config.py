@@ -86,6 +86,27 @@ ATTRIBUTE_MODIFIER_SCALE = 0.01
 ATTRIBUTE_BASELINE_BLEND = 0.4
 ATTRIBUTE_DELTA_CLAMP = 8
 
+
+# --- Tùy chọn kết liễu dựa trên điểm ---
+ALLOW_SCORECARD_STOPPAGES = True
+SCORECARD_STOPPAGE_DIFF_THRESHOLD = 12
+SCORECARD_STOPPAGE_BASE_PROB = 0.28
+SCORECARD_STOPPAGE_PER_POINT = 0.04
+ALLOW_TIE_BREAK_DECISION = True
+TIE_BREAK_DECISION_BIAS = 0.008
+TIE_BREAK_DECISION_SCORE_DELTA = 1
+
+# --- Cấu hình kết liễu do áp đảo trong hiệp ---
+DOMINANCE_FINISH_THRESHOLD = 4
+DOMINANCE_FINISH_BASE_PROB = 0.45
+DOMINANCE_FINISH_PER_POINT = 0.18
+DOMINANCE_FINISH_MAX_PROB = 0.99
+DOMINANCE_SUB_FINISH_BONUS = 0.60
+
+# --- Hệ số điều chỉnh theo khuynh hướng thắng điểm của archetype ---
+FINISH_DECISION_WEIGHT_INFLUENCE = 1.0
+FINISH_MIN_PROB_SCALE = 0.8
+
 # --- Cấu hình Phương thức Kết liễu (finish_method.py) ---
 FINISH_METHODS = {
     "KO": [
@@ -266,3 +287,5 @@ TIME_ARCHETYPE_MODIFIERS = {
     "Durable Grinder": {"round_1_multiplier": 0.5, "final_round_multiplier": 2.0},
     "Glass Cannon": {"round_1_multiplier": 3.0}
 }
+
+FINISH_MAX_PROB_SCALE = 1.6

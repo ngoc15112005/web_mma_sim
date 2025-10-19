@@ -39,6 +39,13 @@ ALERT_RENDERERS = {
 }
 
 
+def _force_rerun():
+    if hasattr(st, "rerun"):
+        st.rerun()
+    elif hasattr(st, "experimental_rerun"):
+        st.experimental_rerun()
+
+
 def ensure_history_loaded():
     if "fight_history" not in st.session_state:
         st.session_state.fight_history = history_manager.load_history()
@@ -376,12 +383,12 @@ def main():
                 ]
                 st.session_state.fight_history = remaining_history
                 history_manager.save_history(remaining_history)
-                st.experimental_rerun()
+                _force_rerun()
         with col_delete_all:
             if st.button("Xóa toàn bộ lịch sử"):
                 st.session_state.fight_history = []
                 history_manager.save_history([])
-                st.experimental_rerun()
+                _force_rerun()
 
     for i, entry in enumerate(st.session_state.fight_history):
         result = entry.fight_result

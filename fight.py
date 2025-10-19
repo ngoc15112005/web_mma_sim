@@ -189,6 +189,68 @@ class Fight:
             note=note,
         )
 
+    def _make_early_finish_time(self, round_number: int, tick_index: int) -> TimeInfo:
+        """Generate a flash-finish timestamp anchored near the start of the round."""
+        tick_index = max(1, min(TICKS_PER_ROUND, tick_index))
+        early_cap = getattr(config, "EARLY_FINISH_MAX_SECOND", 120) or 0
+        if not isinstance(early_cap, int):
+            try:
+                early_cap = int(early_cap)
+            except (TypeError, ValueError):
+                early_cap = 0
+        early_cap = max(0, min(early_cap, ROUND_DURATION_SECONDS - 1))
+        if early_cap <= 0:
+            early_second = 0
+        else:
+            if TICKS_PER_ROUND > 1:
+                progress = (tick_index - 1) / (TICKS_PER_ROUND - 1)
+            else:
+                progress = 0.0
+            alpha = 1.0 + progress * 2.0
+            beta_param = 1.0 + (1.0 - progress) * 2.0
+            sample = random.betavariate(alpha, beta_param)
+            early_second = int(round(sample * early_cap))
+            early_second = max(0, min(early_cap, early_second))
+        minute = early_second // 60
+        second = early_second % 60
+        second_str = str(second).zfill(2)
+        note = f"Lightning finish in round {round_number} at {minute}:{second_str}."
+        return TimeInfo(
+            num_rounds=self.num_rounds,
+            round=round_number,
+            minute=minute,
+            second=second,
+            note=note,
+        )
+
+    def _resolve_finish_time(
+        self,
+        round_number: int,
+        tick_index: int,
+        *,
+        winner_fighter: Optional[Fighter] = None,
+        near_end: bool = False,
+        note_template: Optional[str] = None,
+    ) -> TimeInfo:
+        base_prob = getattr(config, "EARLY_FINISH_PROB", 0.0) or 0.0
+        try:
+            base_prob = float(base_prob)
+        except (TypeError, ValueError):
+            base_prob = 0.0
+        if base_prob > 0.0:
+            scale = 1.0
+            if winner_fighter is not None:
+                scale = self._finish_probability_scale(winner_fighter.archetype)
+            final_prob = max(0.0, min(1.0, base_prob * scale))
+            if final_prob > 0.0 and random.random() < final_prob:
+                return self._make_early_finish_time(round_number, tick_index)
+        return self._make_time_info(
+            round_number,
+            tick_index,
+            near_end=near_end,
+            note_template=note_template,
+        )
+
     def _pick_dominance_finish_hint(self, winner: Fighter, last_phase: Optional[str]) -> str:
         """Select a finish hint for dominance-based stoppages."""
         weights = getattr(winner.archetype, "weights", {}) or {}
@@ -408,7 +470,16 @@ class Fight:
                 winner_side = tick_result["winner"]
                 finish_hint = tick_result["finish_hint"]
                 finish_bonus_points = 4
-                finish_time = self._make_time_info(round_number, tick_index)
+                winner_fighter = None
+                if winner_side == "A":
+                    winner_fighter = self.fighter_a
+                elif winner_side == "B":
+                    winner_fighter = self.fighter_b
+                finish_time = self._resolve_finish_time(
+                    round_number,
+                    tick_index,
+                    winner_fighter=winner_fighter,
+                )
                 break
 
             last_phase = phase
@@ -445,9 +516,10 @@ class Fight:
                             dominance_finish_note = " Trận đấu bị dừng do áp đảo rõ rệt."
                             if finish_time is None:
                                 reference_tick = last_tick_index or tick_count
-                                finish_time = self._make_time_info(
+                                finish_time = self._resolve_finish_time(
                                     round_number,
                                     reference_tick,
+                                    winner_fighter=candidate_fighter,
                                     note_template="Kết thúc áp đảo ở hiệp {round}, trọng tài dừng trận lúc {minute}:{second}.",
                                 )
 
@@ -519,9 +591,10 @@ class Fight:
             round_summary.note += " Kết liễu trận đấu ngay hiệp này."
             if finish_time is None:
                 reference_tick = last_tick_index or tick_count
-                finish_time = self._make_time_info(
+                finish_time = self._resolve_finish_time(
                     round_number,
                     reference_tick,
+                    winner_fighter=winner_fighter,
                     note_template="Kết thúc ở hiệp {round}, sau tiếng chuông.",
                 )
 

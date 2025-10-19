@@ -203,7 +203,12 @@ def display_fight_results(entry: HistoryEntry):
 
     st.success(f"**Kết quả:** {result.result_description}")
     st.write(f"**Kiểu kết thúc:** {result.finish_info.method_type} – {result.finish_info.description}")
-    st.write(f"**Phong cách người thắng:** {result.finish_info.archetype_name}")
+    if result.score_a > result.score_b:
+        st.write(f"**Tên người thắng:** {entry.fighter_a_display}")
+    elif result.score_b > result.score_a:
+        st.write(f"**Tên người thắng:** {entry.fighter_b_display}")
+    else:
+        st.write("**Tên người thắng:** Trận đấu kết thúc với kết quả hòa")
     st.write(
         f"**Thời điểm:** Hiệp {result.time_info.round}/{result.time_info.num_rounds} – "
         f"{result.time_info.minute}:{str(result.time_info.second).zfill(2)}"
@@ -343,10 +348,40 @@ def main():
         st.info("Chưa có trận đấu nào được mô phỏng. Bấm nút 'Mô phỏng trận đấu' để bắt đầu!")
         return
 
-    if st.button("🧹 Xóa lịch sử"):
-        st.session_state.fight_history = []
-        history_manager.save_history([])
-        st.experimental_rerun()
+    with st.expander("Quản lý lịch sử"):
+        total_entries = len(st.session_state.fight_history)
+
+        def _history_label(idx: int) -> str:
+            entry = st.session_state.fight_history[idx]
+            return (
+                f"#{total_entries - idx}: "
+                f"{entry.fighter_a_display} vs {entry.fighter_b_display} "
+                f"({entry.fight_result.score_a}-{entry.fight_result.score_b})"
+            )
+
+        selectable_indices = list(range(total_entries))
+        selected_indices = st.multiselect(
+            "Chọn các trận muốn xóa",
+            options=selectable_indices,
+            format_func=_history_label,
+        )
+
+        col_delete_selected, col_delete_all = st.columns(2)
+        with col_delete_selected:
+            if st.button("Xóa các trận đã chọn") and selected_indices:
+                remaining_history = [
+                    entry
+                    for idx, entry in enumerate(st.session_state.fight_history)
+                    if idx not in selected_indices
+                ]
+                st.session_state.fight_history = remaining_history
+                history_manager.save_history(remaining_history)
+                st.experimental_rerun()
+        with col_delete_all:
+            if st.button("Xóa toàn bộ lịch sử"):
+                st.session_state.fight_history = []
+                history_manager.save_history([])
+                st.experimental_rerun()
 
     for i, entry in enumerate(st.session_state.fight_history):
         result = entry.fight_result

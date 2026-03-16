@@ -246,8 +246,10 @@ def display_fight_results(entry: HistoryEntry):
 
         events = [to_tick_event(raw) for summary in result.round_summaries for raw in summary.events]
         events = [event for event in events if event]
-        df = event_dataframe(events, entry.fighter_a_display, entry.fighter_b_display)
-        render_event_timeline(df, entry.fighter_a_display, entry.fighter_b_display)
+        show_timeline = st.checkbox("Hiển thị timeline chi tiết", value=False, key=f"timeline_{entry.entry_id}")
+        if show_timeline:
+            df = event_dataframe(events, entry.fighter_a_display, entry.fighter_b_display)
+            render_event_timeline(df, entry.fighter_a_display, entry.fighter_b_display)
 
 
 def get_simulation_parameters(selected_class_a: str, selected_class_b: str, selected_archetype_a: str, selected_archetype_b: str):
